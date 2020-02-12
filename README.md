@@ -14,3 +14,4 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab8](lab8) | MySQL Replication
 | [Lab9](lab9) | MySQL INNODB Cluster
 | [Prep](Prep) | VM Installation
+| [Lab1](Lab1) | MySQL Installation
