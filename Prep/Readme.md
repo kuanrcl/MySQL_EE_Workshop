@@ -28,6 +28,10 @@ Mac Address Policy: Generate new MAC addresses for all network adapters
 
 5. Repeat the same "Import" process to create the second VM and renamed to "MySQLnode2"
 
+6. Connect to MySQLnode1 using putty
+
+
+
 # Extra Bonus
 In order to save space on your main drive, you can move the huge VM disk files to another drive, for example, an external hard disk
 
@@ -54,8 +58,25 @@ In order to save space on your main drive, you can move the huge VM disk files t
 ![Add Disk](img/OVA8.png)
 
 6. Run putty to connect to 192.168.56.41 and you are ready to go (the first VM, MySQLnode1)
+```
+user id: mysql
+password: mysql
+```
 
 ![Connect](img/CON1.png)
+
+# MySQL Workbench Installation
+1. Install MySQL Workbench on your laptop
+
+2. Configure connection to MySQLnode1
+
+![Connect](img/WOR1.png)
+
+3. Test connection to make sure Workbench can connect to MySQL
+
+![Connect](img/WOR2.png)
+
+
 
 
 
