@@ -38,8 +38,10 @@ In order to save space on your main drive, you can move the huge VM disk files t
 2. Copy the 2 disk files from your C:\ drive (usually stored in <user directory>\VirtualBox VMs\MySQLnode1\) to the external drive
 
 3. You need to re-generate UUIDs of the moved disk file
+```
 "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid 202002-MySQLWorkshop8019-disk001.vdi
 "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid 202002-MySQLWorkshop8019-disk002.vdi
+```
 
 ![UUID](img/OVA9.png)
 
