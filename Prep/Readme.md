@@ -88,7 +88,17 @@ In order to save space on your main drive, you can move the huge VM disk files t
 
 ![Connect](img/WOR3.png)
 
-4. Test connection to make sure Workbench can connect to MySQL
+4. Edit "System Profile"
+```
+System Type: Linux
+Installation Type: Oracle Linux 7
+Configuration File: /opt/download/lab/04-MEB/config/my1.cnf
+Start MySQL: /usr/local/mysql/bin/mysqld_safe --default_file=/opt/download/lab/04-MEB/config/my1.cnf &
+Stop MySQL: /usr/local/mysql/bin/mysql -uroot -h127.0.0.1 -P3306 -pmysql -e"shutdown;"
+```
+![Connect](img/WOR4.png)
+
+5. Test connection to make sure Workbench can connect to MySQL
 
 ![Connect](img/WOR2.png)
 
