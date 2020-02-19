@@ -1,4 +1,5 @@
 # VM Preparation
+We will create 2 VMs by importing the OVA file provided in the lab
 
 ## Prerequisites Software
 ### Virtualbox
@@ -16,9 +17,14 @@
 2. Change the following:
 Name: MySQLnode1
 Mac Address Policy: Generate new MAC addresses for all network adapters
-Click on "Import"
 
 ![Import OVA4](img/OVA4.png)
 
-3. 
+3. Start importing by clicking on "Import"
+
+![Import OVA5](img/OVA5.png)
+
+4. Once the import completes, you should have the VM imported in Virtualbox in "Powered Off" mode
+
+5. Repeat the same "Import" process to create the second VM and renamed to "MySQLnode2"
 
