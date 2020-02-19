@@ -43,13 +43,13 @@ sudo ./03-stopMySQL.sh
 sudo ./04-uninstallRPM.sh
 ```
 
-~[Uninstall](img/INS4.png)
+![Uninstall](img/INS4.png)
 
 6. Now install MySQL using tar
 ```
 sudo ./05-installTAR.sh
 ```
-~[Install](img/INS5.png)
+![Install](img/INS5.png)
 
 7. MySQL is now installed in /opt/mysql-commercial-8.0.19-el7-x86_64
 ```
