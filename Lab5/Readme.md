@@ -56,6 +56,8 @@ Agent User: <Enter>
 Password: agent
 ```
 
+![Monitor](img/MON2.png)
+
 2. Start the agent
 ```
 /home/mysql/mysql/enterprise/agent/bin/agent.sh &
