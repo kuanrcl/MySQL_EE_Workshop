@@ -3,7 +3,8 @@ MySQL Enterprise Edition Hands-on Workshop
 ## Lab Structure
 |  | |
 | ------------- | ------------------------------------------------------- |
-| [Preparation(Started) | Preparation Lab / Create Server fo this LAB 
+| [Prep](Prep) | VM Installation
+| [Lab1](Lab1) | MySQL Installation
 | [Lab1](lab1) | MySQL Installation   
 | [Lab2](lab2) | MySQL Introduction  
 | [Lab3](lab3) | MySQL Workbench
@@ -13,5 +14,5 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab7](lab7) | MySQL Enterprise Monitor
 | [Lab8](lab8) | MySQL Replication
 | [Lab9](lab9) | MySQL INNODB Cluster
-| [Prep](Prep) | VM Installation
-| [Lab1](Lab1) | MySQL Installation
+| 
+| 
