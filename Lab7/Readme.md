@@ -3,8 +3,9 @@ In this lab, you will learn how to create MySQL InnoDB cluster from scratch usin
 We will create 3 MySQL server:
 MySQLnode1 VM (192.168.56.41): 2 MySQL servers
 MySQLnode2 VM (192.168.56.42): 1 MySQL server
-## Build InnoDB Cluster
-1. Initialize and Start MySQL Servers
+
+## Initialize and Start MySQL Servers
+
 
 ### Login to MySQLnode1 (192.168.56.41)
 ```
