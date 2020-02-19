@@ -49,9 +49,15 @@ In order to save space on your main drive, you can move the huge VM disk files t
 
 ![Add Disk](img/OVA7.png)
 
-5. Once the moved disk files are added back to the VM settings, you are good to go
+5. Once the moved disk files are added back to the VM settings, you can start powering up the VM
 
 ![Add Disk](img/OVA8.png)
+
+6. Run putty to connect to 192.168.56.41 and you are ready to go (the first VM, MySQLnode1)
+
+![Connect](img/CON1.png)
+
+
 
 
 
