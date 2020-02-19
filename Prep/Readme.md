@@ -84,7 +84,11 @@ In order to save space on your main drive, you can move the huge VM disk files t
 
 ![Connect](img/WOR1.png)
 
-3. Test connection to make sure Workbench can connect to MySQL
+3. Make sure "Remote Management" is enabled with "SSH login based management"
+
+![Connect](img/WOR3.png)
+
+4. Test connection to make sure Workbench can connect to MySQL
 
 ![Connect](img/WOR2.png)
 
