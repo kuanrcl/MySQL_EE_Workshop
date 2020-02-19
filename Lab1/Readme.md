@@ -49,6 +49,17 @@ sudo ./04-uninstallRPM.sh
 ```
 sudo ./05-installTAR.sh
 ```
+~[Install](img/INS5.png)
+
+7. MySQL is now installed in /opt/mysql-commercial-8.0.19-el7-x86_64
+```
+cd /opt/mysql-commercial-8.0.19-el7-x86_64
+ls
+cd /usr/local/mysql
+ls
+```
+8. You are ready to move to other labs
+
 
 
 
