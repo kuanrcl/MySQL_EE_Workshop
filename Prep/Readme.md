@@ -10,6 +10,6 @@
 
 ## Create VMs
 1. Once Virtualbox is installed, import the Virtualbox OVA file provided (202002-MySQLWorkshop8019.ova)
-![Import OVA](img/ova2.png)
+![Import OVA](img/OVA2.png)
 
 
