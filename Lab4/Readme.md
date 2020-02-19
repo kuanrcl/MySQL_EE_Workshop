@@ -6,12 +6,18 @@ We will use MySQL Enterprise Backup to do backup and restore of MySQL database
 ![Backup](img/BAC1.png)
 
 2. Create MEB Account by select "Create MEB Account"
+```
+user id: mysqlbackup
+password: mysql
+```
 
 ![Backup](img/BAC2.png)
 
+Click "OK" to complete the configuration
+
 ![Backup](img/BAC3.png)
 
-3. Create a backup schedule
+3. Create a backup schedule by selecting "New Job"
 
 ![Backup](img/BAC4.png)
 
@@ -23,9 +29,11 @@ We will use MySQL Enterprise Backup to do backup and restore of MySQL database
 
 ![Backup](img/BAC7.png)
 
-5. You can execute the schedule job to initiate the backup
+5. You can execute the schedule job to initiate the backup by clicking "Execute Now"
 
 ![Backup](img/BAC8.png)
+
+Backup progress ...
 
 ![Backup](img/BAC9.png)
 
