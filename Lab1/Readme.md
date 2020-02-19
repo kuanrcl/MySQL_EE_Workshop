@@ -53,6 +53,7 @@ sudo ./instalTar.sh
 cd ../03-shell
 sudo ./installTar.sh
 ```
+
 ![Install](img/INS5.png)
 
 7. MySQL is now installed in /opt/mysql-commercial-8.0.19-el7-x86_64
