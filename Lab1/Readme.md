@@ -62,6 +62,10 @@ cd /opt/mysql-commercial-8.0.19-el7-x86_64
 ls
 cd /usr/local/mysql
 ls
+cd /usr/local/shell
+ls
+cd /usr/local/router
+ls
 ```
 8. You are ready to move to other labs
 
