@@ -12,4 +12,44 @@ cd 01-mysql-server
 sudo ./01-installRPM.sh
 ```
 
+![Install](img/INS1.png)
+
+2. Start MySQL (initialization and start-up MySQL)
+```
+sudo ./02-startMySQl.sh
+```
+
+![Start](img/INS2.png)
+
+3. Once MySQL is started, you can explore the system to find out where are the MySQL data directory, binaries, etc
+``` 
+rpm -ql mysql-commercial-server-8.0.19-1.1.el7.x86_64
+cd /usr/sbin
+cd /etc
+cd /var/lib
+cd /usr/bin
+cd /usr/lib/systemd/system/
+```
+
+4. Stop MySQL
+```
+sudo .\03-stopMySQL.sh
+```
+
+![Stop](img/INS3.png)
+
+5. Unstall MySQL RPM
+```
+sudo ./04-uninstallRPM.sh
+```
+
+~[Uninstall](img/INS4.png)
+
+6. Now install MySQL using tar
+```
+sudo ./05-installTAR.sh
+```
+
+
+
 
