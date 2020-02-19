@@ -1,5 +1,4 @@
-#
-VM Preparation
+# VM Preparation
 
 ## Prerequisites Software
 ### Virtualbox
