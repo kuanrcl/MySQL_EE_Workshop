@@ -5,8 +5,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | ------------- | ------------------------------------------------------- |
 | [Prep](Prep) | VM Installation
 | [Lab1](Lab1) | MySQL Installation
-| [Lab1](lab1) | MySQL Installation   
-| [Lab2](lab2) | MySQL Introduction  
+| [Lab2](lab2) | MySQL Administration     
 | [Lab3](lab3) | MySQL Workbench
 | [Lab4](lab4) | MySQL Enterprise Backup
 | [Lab5](lab5) | MySQL Enterprise Firewall
