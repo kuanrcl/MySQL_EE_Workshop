@@ -14,5 +14,4 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab7](lab7) | MySQL Enterprise Monitor
 | [Lab8](lab8) | MySQL Replication
 | [Lab9](lab9) | MySQL INNODB Cluster
-| 
-| 
+
