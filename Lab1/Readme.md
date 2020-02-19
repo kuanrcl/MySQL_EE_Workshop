@@ -33,7 +33,7 @@ cd /usr/lib/systemd/system/
 
 4. Stop MySQL
 ```
-sudo .\03-stopMySQL.sh
+sudo ./03-stopMySQL.sh
 ```
 
 ![Stop](img/INS3.png)
