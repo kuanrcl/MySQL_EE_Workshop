@@ -6,8 +6,7 @@ MySQLnode2 VM (192.168.56.42): 1 MySQL server
 
 ## Initialize and Start MySQL Servers
 
-
-### Login to MySQLnode1 (192.168.56.41)
+1. Login to MySQLnode1 (192.168.56.41)
 ```
 cd /opt/download/lab/13-innoDBCluster/01-firstTest
 mysqld --defaults-file=config/my1.cnf --initialize-insecure
@@ -16,7 +15,7 @@ mysqld_safe --defaults-file=config/my1.cnf &
 mysqld_safe --defaults-file=config/my2.cnf &
 ```
 
-### Login to MySQLnode2 (192.168.56.41)
+2. Login to MySQLnode2 (192.168.56.41)
 ```
 cd /opt/download/lab/13-innoDBCluster/01-firstTest
 mysqld --defaults-file=config/my3.cnf --initialize-insecure
