@@ -9,5 +9,6 @@
 1. Install putty from here: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
 ## Create VMs
-1. Once Virtualbox is installed, import the Virtualbox OVA file provided (202002-MySQLWorkshop8019.ova) 
+1. Once Virtualbox is installed, import the Virtualbox OVA file provided (202002-MySQLWorkshop8019.ova)
+
 
