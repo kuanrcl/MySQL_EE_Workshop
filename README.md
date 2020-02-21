@@ -9,7 +9,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab3](Lab3) | MySQL Workbench
 | [Lab4](Lab4) | MySQL Enterprise Backup
 | [Lab5](Lab5) | MySQL Enterprise Monitor
-| [Lab6](Lab6) | MySQL Transparent Data Encryption, Firewall and Audit
+| [Lab6](Lab6) | MySQL Security (Transparent Data Encryption, Firewall and Audit)
 | [Lab7](Lab7) | MySQL InnoDB Cluster
 | [Lab8](Lab8) | MySQL Replication
 
