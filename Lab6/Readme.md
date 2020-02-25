@@ -134,6 +134,42 @@ mysqladmin -uroot -h127.0.0.1 -P3306 -p shutdown
 cd /opt/download/lab/23-Security/secure-audit-filter/
 . ./comm.sh
 ./00-createdb-secure.sh
+./01-startdb.sh
+./02-resetPasswd.sh
+./03-addLoginPath.sh
+```
+
+#### Install Enterprise Audit plugin
+```
+./31-installAudit.sh
+./32-createAuditUser.sh
+./33-allLog-Filter.sh
+```
+#### Now run some SQL statements
+```
+. ./comm.sh
+mysql -uaudituser1 -h127.0.0.1 
+```
+mysql>
+```
+use auditdb1;
+create table audittable1 (val int not null primary key);
+insert into audittable1 values (1);
+
+select count(*) from audittable1;
+select count(*) from mysql.user;
+use mysql;
+select count(*) from user;
+\q
+```
+#### Examine audit.log
+tail -100 ~/data/lab23/audit.log
+
+#### Reset the audit configuration
+/opt/download/lab/23-Security/secure-audit-filter/35-testAllLog-disabled.sh
+/opt/download/lab/23-Security/secure-audit-filter/39-cleanupAuditFilters.sh
+
+
 
 
 
