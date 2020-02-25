@@ -163,12 +163,15 @@ select count(*) from user;
 \q
 ```
 #### Examine audit.log
+```
 tail -100 ~/data/lab23/audit.log
+```
 
 #### Reset the audit configuration
+```
 /opt/download/lab/23-Security/secure-audit-filter/35-testAllLog-disabled.sh
 /opt/download/lab/23-Security/secure-audit-filter/39-cleanupAuditFilters.sh
-
+```
 
 
 
