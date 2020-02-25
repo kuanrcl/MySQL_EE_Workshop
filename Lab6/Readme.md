@@ -116,6 +116,13 @@ Select the statement "select * from mytable" and click on "Delete"
 Click on "Protecting" mode
 Click on "Apply"
 
+### MySQL Enterprise Audit
+We will first create a login-path to obfuscate the my.cnf configuration to secure the my.cnf configruation settings
+
+```
+mysqladmin -uroot -h127.0.0.1 -P3306 -p shutdown
+cd /opt/download/lab/23-Security/secure-
+
 Switch to Terminal again
 mysql>
 ``` 
