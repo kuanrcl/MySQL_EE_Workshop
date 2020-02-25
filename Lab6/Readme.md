@@ -64,9 +64,74 @@ strings mytable_enc.ibd | more
 ## MySQL Enterprise Firewall
 We will use MySQL Workbench to work with Enterprise Firewall
 
-###
-Start MySQL Workbench using the connection profile created during VM preparation
+### Install the Enterprise Firewall Plugin
+Start MySQL Workbench using the connection profile created during VM preparation and click on "Install Firewall"
 ![Workbench](img/F1.png)
+
+Once the firewall plugin is installed, enable the firewall and other features
+
+![Workbench](img/F2.png)
+
+![Workbench](img/F3.png)
+
+![Workbench](img/F4.png)
+
+![Workbench](img/F5.png)
+
+Once everything is installed, click on "Update Statistics"
+
+![Workbench](img/F6.png)
+
+### Create a test demo user
+Create a user called "demo", select authentication "caching_sha2_password", enter password that you like, click "Create"
+
+![Workbench](img/F7.png)
+
+Select the "Administrative Roles" tab, click on "DBA" role for simplicity reason
+
+![Workbench](img/F8.png)
+
+### Set the Firewall in "Recording" mode
+
+![Workbench](img/F9.png)
+
+### In another terminal, execute a few SQL statements using user "demo"
+
+```
+mysql -udemo -h127.0.0.1 -P3306 -p
+```
+mysql>
+```
+show databases;
+use mydb2;
+show tables;
+select * from mytable;
+select * from mytable_enc;
+select f1, f2 from mytable_enc where f1=1;
+```
+
+Switch to Workbench
+Change the "Recording" mode to "Protecting" mode
+Select the statement "select * from mytable" and click on "Delete"
+Click on "Protecting" mode
+Click on "Apply"
+
+Switch to Terminal again
+mysql>
+``` 
+select * from mytable;
+```
+Firewall will block this SQL statement
+
+![Workbench](img/F10.png)
+
+
+
+
+
+
+
+
 
 
 
