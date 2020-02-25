@@ -66,6 +66,7 @@ We will use MySQL Workbench to work with Enterprise Firewall
 
 ###
 Start MySQL Workbench using the connection profile created during VM preparation
+![Workbench](img/F1.png)
 
 
 
