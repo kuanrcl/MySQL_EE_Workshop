@@ -20,6 +20,9 @@ On MySQL (Master, 3316)
 ```
 . ./comm.sh
 mysql -t -uroot -h127.0.0.1 -P3316
+```
+mysql>
+```
 drop user if exists repl@'localhost';
 create user repl@'localhost' identified with mysql_native_password by 'repl';
 grant replication slave on *.* to repl@'localhost';
@@ -29,10 +32,14 @@ create  user demo@'%' identified by 'demo';
 grant all on *.* to demo@'%';
 flush privileges;
 select @@hostname, @@port, host,user from mysql.user;
+\q
 ```
 On MySQL (Slave, 3326)
 ```
 mysql -t -uroot -h127.0.0.1 -P3326 << EOL2
+```
+mysql>
+```
 drop user if exists repl@'localhost';
 create user repl@'localhost' identified with mysql_native_password by 'repl';
 grant replication slave on *.* to repl@'localhost';
@@ -42,6 +49,7 @@ create  user demo@'%' identified by 'demo';
 grant all on *.* to demo@'%';
 flush privileges;
 select @@hostname, @@port, host,user,plugin from mysql.user;
+\q
 ```
 ### Create Replication 
 On MySQL (Master, 3316), initialize the binary log
@@ -135,6 +143,9 @@ dba.configureReplicaSetInstance('root:@localhost:3330',{clusterAdmin:'rsadmin',c
 ```
 . ./comm.sh
 mysqlsh --uri=rsadmin:rspass@primary:3310
+```
+mysqlsh>
+```
 var x = dba.createReplicaSet('myrs')
 x.status()
 \q
@@ -142,9 +153,10 @@ x.status()
 ### Add MySQL instances to the newly created ReplicaSet
 ```
 . ./comm.sh
-
 mysqlsh --uri=rsadmin:rspass@primary:3310
-
+```
+mysqlsh>
+```
 var x = dba.getReplicaSet()
 x.addInstance('rsadmin:rspass@primary:3320', {recoveryMethod:'Incremental'})
 x.addInstance('rsadmin:rspass@primary:3330', {recoveryMethod:'Incremental'})
