@@ -68,6 +68,92 @@ start slave for channel 'channel1';
 
 show slave status for channel 'channel1'\G
 ```
+### Check replication status
+On MySQL (Master, 3316)
+```
+. ./comm.sh
+mysql -t -uroot -h127.0.0.1 -P3316
+select @@hostname, @@port;
+show master status;
+show slave status for channel 'channel1'\G
+\q
+```
+On MySQL (Slave, 3326)
+```
+mysql -uroot -h127.0.0.1 -P3326
+select @@hostname, @@port;
+show master status;
+show slave status for channel 'channel1'\G
+\q
+```
+### Replication in Action
+On MySQL (Master, 3316)
+```
+. ./comm.sh
+mysql -uroot -h127.0.0.1 -P3316  << EOL1
+create database if not exists test1;
+use test1;
+create table if not exists mytable1 (f1 int not null auto_increment primary key, f2 varchar(20));
+insert into mytable1 (f2) values ('aaaaaaaaaaaaaaa');
+insert into mytable1 (f2) values ('aaaaaaaaaaaaaaa');
+insert into mytable1 (f2) values ('aaaaaaaaaaaaaaa');
+insert into mytable1 (f2) values ('aaaaaaaaaaaaaaa');
+insert into mytable1 (f2) values ('aaaaaaaaaaaaaaa');
+insert into mytable1 (f2) values ('aaaaaaaaaaaaaaa');
+insert into mytable1 (f2) values ('aaaaaaaaaaaaaaa');
+insert into mytable1 (f2) values ('aaaaaaaaaaaaaaa');
+select @@port, count(*) from test1.mytable1;
+\q
+```
+On MySQL (Slave, 3326), you should see the data replicated across from Master, 3316
+```
+. ./comm.sh
+mysql -t -uroot -h127.0.0.1 -P3326  -e "select @@port, count(*) from test1.mytable1;"
+```
+
+## MySQL Replication using ReplicaSet with mysqlsh
+You are strongly encouraged to use the brand new ReplicaSet to manage MySQL Replication
+### Initialize MySQL engine
+```
+cd /opt/download/lab/16-ReplicaSet
+. ./comm.sh
+./01-init.sh
+./02-startdb.sh
+```
+### Configure the ReplicaSetInstance
+```
+. ./comm.sh
+mysqlsh
+```
+mysqlsh>
+```
+dba.configureReplicaSetInstance('root:@localhost:3310',{clusterAdmin:'rsadmin',clusterAdminPassword:'rspass'});
+dba.configureReplicaSetInstance('root:@localhost:3320',{clusterAdmin:'rsadmin',clusterAdminPassword:'rspass'});
+dba.configureReplicaSetInstance('root:@localhost:3330',{clusterAdmin:'rsadmin',clusterAdminPassword:'rspass'});
+```
+### Create the ReplicaSet called myrs
+```
+. ./comm.sh
+mysqlsh --uri=rsadmin:rspass@primary:3310
+var x = dba.createReplicaSet('myrs')
+x.status()
+\q
+```
+### Add MySQL instances to the newly created ReplicaSet
+```
+. ./comm.sh
+
+mysqlsh --uri=rsadmin:rspass@primary:3310
+
+var x = dba.getReplicaSet()
+x.addInstance('rsadmin:rspass@primary:3320', {recoveryMethod:'Incremental'})
+x.addInstance('rsadmin:rspass@primary:3330', {recoveryMethod:'Incremental'})
+x.status()
+\q
+```
+
+
+
 
 
 
