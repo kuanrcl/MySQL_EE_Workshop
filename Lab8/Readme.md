@@ -139,6 +139,33 @@ dba.configureReplicaSetInstance('root:@localhost:3310',{clusterAdmin:'rsadmin',c
 dba.configureReplicaSetInstance('root:@localhost:3320',{clusterAdmin:'rsadmin',clusterAdminPassword:'rspass'});
 dba.configureReplicaSetInstance('root:@localhost:3330',{clusterAdmin:'rsadmin',clusterAdminPassword:'rspass'});
 ```
+MySQL instances configured and users are created
+```
+Configuring local MySQL instance listening at port 3310 for use in an InnoDB ReplicaSet...
+
+This instance reports its own address as primary:3310
+Assuming full account name 'rsadmin'@'%' for rsadmin
+
+The instance 'primary:3310' is valid to be used in an InnoDB ReplicaSet.
+Cluster admin user 'rsadmin'@'%' created.
+The instance 'primary:3310' is already ready to be used in an InnoDB ReplicaSet.
+Configuring local MySQL instance listening at port 3320 for use in an InnoDB ReplicaSet...
+
+This instance reports its own address as primary:3320
+Assuming full account name 'rsadmin'@'%' for rsadmin
+
+The instance 'primary:3320' is valid to be used in an InnoDB ReplicaSet.
+Cluster admin user 'rsadmin'@'%' created.
+The instance 'primary:3320' is already ready to be used in an InnoDB ReplicaSet.
+Configuring local MySQL instance listening at port 3330 for use in an InnoDB ReplicaSet...
+
+This instance reports its own address as primary:3330
+Assuming full account name 'rsadmin'@'%' for rsadmin
+
+The instance 'primary:3330' is valid to be used in an InnoDB ReplicaSet.
+Cluster admin user 'rsadmin'@'%' created.
+The instance 'primary:3330' is already ready to be used in an InnoDB ReplicaSet.
+```
 ### Create the ReplicaSet called myrs
 ```
 . ./comm.sh
@@ -150,7 +177,43 @@ var x = dba.createReplicaSet('myrs')
 x.status()
 \q
 ```
-### Add MySQL instances to the newly created ReplicaSet
+ReplicaSet created successfully
+```
+WARNING: Using a password on the command line interface can be insecure.
+A new replicaset with instance 'primary:3310' will be created.
+
+* Checking MySQL instance at primary:3310
+
+This instance reports its own address as primary:3310
+primary:3310: Instance configuration is suitable.
+
+* Updating metadata...
+
+ReplicaSet object successfully created for primary:3310.
+Use rs.addInstance() to add more asynchronously replicated instances to this replicaset and rs.status() to check its status.
+
+WARNING: Using a password on the command line interface can be insecure.
+You are connected to a member of replicaset 'myrs'.
+{
+    "replicaSet": {
+        "name": "myrs",
+        "primary": "primary:3310",
+        "status": "AVAILABLE",
+        "statusText": "All instances available.",
+        "topology": {
+            "primary:3310": {
+                "address": "primary:3310",
+                "instanceRole": "PRIMARY",
+                "mode": "R/W",
+                "status": "ONLINE"
+            }
+        },
+        "type": "ASYNC"
+    }
+}
+```
+
+### Add MySQL instances to the newly created ReplicaSet (Primary:3310, Secondary:3320, 3330)
 ```
 . ./comm.sh
 mysqlsh --uri=rsadmin:rspass@primary:3310
@@ -162,6 +225,98 @@ x.addInstance('rsadmin:rspass@primary:3320', {recoveryMethod:'Incremental'})
 x.addInstance('rsadmin:rspass@primary:3330', {recoveryMethod:'Incremental'})
 x.status()
 \q
+```
+MySQL instannces added to the ReplicaSet
+```
+WARNING: Using a password on the command line interface can be insecure.
+You are connected to a member of replicaset 'myrs'.
+Adding instance to the replicaset...
+
+* Performing validation checks
+
+This instance reports its own address as primary:3320
+primary:3320: Instance configuration is suitable.
+
+* Checking async replication topology...
+
+* Checking transaction state of the instance...
+
+NOTE: The target instance 'primary:3320' has not been pre-provisioned (GTID set is empty). The Shell is unable to decide whether replication can completely recover its state.
+
+Incremental state recovery selected through the recoveryMethod option
+
+* Updating topology
+** Configuring primary:3320 to replicate from primary:3310
+** Waiting for new instance to synchronize with PRIMARY...
+
+The instance 'primary:3320' was added to the replicaset and is replicating from primary:3310.
+
+Adding instance to the replicaset...
+
+* Performing validation checks
+
+This instance reports its own address as primary:3330
+primary:3330: Instance configuration is suitable.
+
+* Checking async replication topology...
+
+* Checking transaction state of the instance...
+
+NOTE: The target instance 'primary:3330' has not been pre-provisioned (GTID set is empty). The Shell is unable to decide whether replication can completely recover its state.
+
+Incremental state recovery selected through the recoveryMethod option
+
+* Updating topology
+** Configuring primary:3330 to replicate from primary:3310
+** Waiting for new instance to synchronize with PRIMARY...
+
+The instance 'primary:3330' was added to the replicaset and is replicating from primary:3310.
+
+WARNING: Using a password on the command line interface can be insecure.
+You are connected to a member of replicaset 'myrs'.
+{
+    "replicaSet": {
+        "name": "myrs",
+        "primary": "primary:3310",
+        "status": "AVAILABLE",
+        "statusText": "All instances available.",
+        "topology": {
+            "primary:3310": {
+                "address": "primary:3310",
+                "instanceRole": "PRIMARY",
+                "mode": "R/W",
+                "status": "ONLINE"
+            },
+            "primary:3320": {
+                "address": "primary:3320",
+                "instanceRole": "SECONDARY",
+                "mode": "R/O",
+                "replication": {
+                    "applierStatus": "APPLIED_ALL",
+                    "applierThreadState": "Slave has read all relay log; waiting for more updates",
+                    "receiverStatus": "ON",
+                    "receiverThreadState": "Waiting for master to send event",
+                    "replicationLag": null
+                },
+                "status": "ONLINE"
+            },
+            "primary:3330": {
+                "address": "primary:3330",
+                "instanceRole": "SECONDARY",
+                "mode": "R/O",
+                "replication": {
+                    "applierStatus": "APPLIED_ALL",
+                    "applierThreadState": "Slave has read all relay log; waiting for more updates",
+                    "receiverStatus": "ON",
+                    "receiverThreadState": "Waiting for master to send event",
+                    "replicationLag": null
+                },
+                "status": "ONLINE"
+            }
+        },
+        "type": "ASYNC"
+    }
+}
 ```
 
 
