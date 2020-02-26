@@ -29,7 +29,7 @@ mysqld_safe --defaults-file=config/my3.cnf &
 ```
 mysqlsh
 ```
-mysql>
+mysqlsh>
 ```
 dba.configureInstance('root@localhost:3310', {clusterAdmin:'gradmin', clusterAdminPassword:'grpass'})
 dba.configureInstance('root@localhost:3320', {clusterAdmin:'gradmin', clusterAdminPassword:'grpass'})
@@ -39,16 +39,16 @@ dba.configureInstance('root@localhost:3320', {clusterAdmin:'gradmin', clusterAdm
 ```
 mysqlsh
 ```
-mysql>
+mysqlsh>
 ```
 dba.configureInstance('root@localhost:3330', {clusterAdmin:'gradmin', clusterAdminPassword:'grpass'})
 ```
 
 3. MySQLnode1, 192.168.56.41, hostname: primary
 ```
-mysql
+mysqlsh
 ```
-mysql>
+mysqlsh>
 ```
 \connect gradmin:grpass@primary:3310
 dba.createCluster('mycluster')
