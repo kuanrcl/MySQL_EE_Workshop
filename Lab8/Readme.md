@@ -64,7 +64,8 @@ On MySQL (Slave, 3326), configure the replication settings
 mysql -uroot -h127.0.0.1 -P3326 << EOL3326
 reset master;
 reset slave;
-hange master to
+
+change master to
 master_host='127.0.0.1',
 master_user='repl',
 master_password='repl',
@@ -76,8 +77,11 @@ start slave for channel 'channel1';
 
 show slave status for channel 'channel1'\G
 ```
+
 ### Check replication status
+
 On MySQL (Master, 3316)
+
 ```
 . ./comm.sh
 mysql -t -uroot -h127.0.0.1 -P3316
@@ -86,7 +90,9 @@ show master status;
 show slave status for channel 'channel1'\G
 \q
 ```
+
 On MySQL (Slave, 3326)
+
 ```
 mysql -uroot -h127.0.0.1 -P3326
 select @@hostname, @@port;
@@ -94,8 +100,11 @@ show master status;
 show slave status for channel 'channel1'\G
 \q
 ```
+
 ### Replication in Action
+
 On MySQL (Master, 3316)
+
 ```
 . ./comm.sh
 mysql -uroot -h127.0.0.1 -P3316  << EOL1
@@ -113,7 +122,9 @@ insert into mytable1 (f2) values ('aaaaaaaaaaaaaaa');
 select @@port, count(*) from test1.mytable1;
 \q
 ```
+
 On MySQL (Slave, 3326), you should see the data replicated across from Master, 3316
+
 ```
 . ./comm.sh
 mysql -t -uroot -h127.0.0.1 -P3326  -e "select @@port, count(*) from test1.mytable1;"
@@ -121,24 +132,30 @@ mysql -t -uroot -h127.0.0.1 -P3326  -e "select @@port, count(*) from test1.mytab
 
 ## MySQL Replication using ReplicaSet with mysqlsh
 You are strongly encouraged to use the brand new ReplicaSet to manage MySQL Replication
+
 ### Initialize MySQL engine
+
 ```
 cd /opt/download/lab/16-ReplicaSet
 . ./comm.sh
 ./01-init.sh
 ./02-startdb.sh
 ```
+
 ### Configure the ReplicaSetInstance
+
 ```
 . ./comm.sh
 mysqlsh
 ```
+
 mysqlsh>
 ```
 dba.configureReplicaSetInstance('root:@localhost:3310',{clusterAdmin:'rsadmin',clusterAdminPassword:'rspass'});
 dba.configureReplicaSetInstance('root:@localhost:3320',{clusterAdmin:'rsadmin',clusterAdminPassword:'rspass'});
 dba.configureReplicaSetInstance('root:@localhost:3330',{clusterAdmin:'rsadmin',clusterAdminPassword:'rspass'});
 ```
+
 MySQL instances configured and users are created
 ```
 Configuring local MySQL instance listening at port 3310 for use in an InnoDB ReplicaSet...
@@ -166,18 +183,23 @@ The instance 'primary:3330' is valid to be used in an InnoDB ReplicaSet.
 Cluster admin user 'rsadmin'@'%' created.
 The instance 'primary:3330' is already ready to be used in an InnoDB ReplicaSet.
 ```
+
 ### Create the ReplicaSet called myrs
+
 ```
 . ./comm.sh
 mysqlsh --uri=rsadmin:rspass@primary:3310
 ```
+
 mysqlsh>
 ```
 var x = dba.createReplicaSet('myrs')
 x.status()
 \q
 ```
+
 ReplicaSet created successfully
+
 ```
 WARNING: Using a password on the command line interface can be insecure.
 A new replicaset with instance 'primary:3310' will be created.
@@ -214,10 +236,12 @@ You are connected to a member of replicaset 'myrs'.
 ```
 
 ### Add MySQL instances to the newly created ReplicaSet (Primary:3310, Secondary:3320, 3330)
+
 ```
 . ./comm.sh
 mysqlsh --uri=rsadmin:rspass@primary:3310
 ```
+
 mysqlsh>
 ```
 var x = dba.getReplicaSet()
@@ -226,7 +250,9 @@ x.addInstance('rsadmin:rspass@primary:3330', {recoveryMethod:'Incremental'})
 x.status()
 \q
 ```
+
 MySQL instannces added to the ReplicaSet
+
 ```
 WARNING: Using a password on the command line interface can be insecure.
 You are connected to a member of replicaset 'myrs'.
