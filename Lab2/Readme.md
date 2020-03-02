@@ -45,7 +45,7 @@ restart;
 ## Explore MySQL server
 1. One 1st terminal, monitor the MySQL error log
 ```
-tail -f /home/mysql/data/02/virtual-41.log
+tail -f /home/mysql/data/02-Admin/virtual-41.log
 ```
 
 2. On 2nd Terminal, take a look at the MySQL server settings and configurations
