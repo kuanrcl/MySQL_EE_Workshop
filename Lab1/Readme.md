@@ -48,9 +48,9 @@ sudo ./04-uninstallRPM.sh
 6. Now install MySQL (MySQL Server, MySQL Router and MySQL Shell) using tar
 ```
 sudo ./05-installTAR.sh
-cd ../02-router
+cd ../02-shell
 sudo ./instalTar.sh
-cd ../03-shell
+cd ../03-router
 sudo ./installTar.sh
 ```
 
