@@ -5,7 +5,7 @@ In this lab, you will start learning about how to start/stop MySQL server and ex
 ```
 cd /opt/download/lab/02-Admin
 export PATH=/usr/local/mysql/bin:$PATH
-view /opt/download/lab/02-Admin/config/my.cnf
+view /opt/download/lab/02-Admin/config/my1.cnf
 ```
 2. Take note on the location of the error log file, data directory, etc
 
