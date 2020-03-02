@@ -16,7 +16,7 @@ mysqld --defaults-file=config/my1.cnf --initialize
 
 4. Start up MySQL Server
 ```
-mysqld –defaults-file=config/my1.cnf &
+mysqld –-defaults-file=config/my1.cnf &
 ```
 
 5. Copy the temporary password displayed on the screen, and find out about the temporary password generated in the error log file
