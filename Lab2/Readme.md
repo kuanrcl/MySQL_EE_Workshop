@@ -11,12 +11,12 @@ view /opt/download/lab/02-Admin/config/my1.cnf
 
 3. Initialize the MySQL server
 ```
-mysqld --defaults-file=config/my.cnf --initialize
+mysqld --defaults-file=config/my1.cnf --initialize
 ```
 
 4. Start up MySQL Server
 ```
-mysqld –defaults-file=config/my.cnf &
+mysqld –defaults-file=config/my1.cnf &
 ```
 
 5. Copy the temporary password displayed on the screen, and find out about the temporary password generated in the error log file
@@ -34,7 +34,7 @@ shutdown;
 
 7. Restart the MySQL server
 ```
-mysqld_safe --defaults-file=config/my.cnf &
+mysqld_safe --defaults-file=config/my1.cnf &
 mysql -uroot –p -h127.0.0.1 -P3306
 ```
 mysql>
