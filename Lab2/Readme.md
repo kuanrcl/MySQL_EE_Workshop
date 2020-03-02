@@ -23,7 +23,7 @@ mysqld –-defaults-file=config/my1.cnf &
 
 6. Change the root password
 ```
-mysql -uroot –p -h127.0.0.1 -P3306
+mysql -uroot -h127.0.0.1 -P3306 -p
 ```
 mysql>
 ```
@@ -35,7 +35,7 @@ shutdown;
 7. Restart the MySQL server
 ```
 mysqld_safe --defaults-file=config/my1.cnf &
-mysql -uroot –p -h127.0.0.1 -P3306
+mysql -uroot -h127.0.0.1 -P3306 -p
 ```
 mysql>
 ```
