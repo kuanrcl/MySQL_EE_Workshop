@@ -91,9 +91,9 @@ In order to save space on your main drive, you can move the huge VM disk files t
 4. Edit "System Profile"
 ```
 System Type: Linux
-Installation Type: Oracle Linux 7
-Configuration File: /opt/download/lab/04-MEB/config/my1.cnf
-Start MySQL: /usr/local/mysql/bin/mysqld_safe --default_file=/opt/download/lab/04-MEB/config/my1.cnf &
+Installation Type: Custom
+Configuration File: /opt/download/lab/02-Admin/config/my1.cnf
+Start MySQL: /usr/local/mysql/bin/mysqld_safe --default_file=/opt/download/lab/02-Admin/config/my1.cnf &
 Stop MySQL: /usr/local/mysql/bin/mysql -uroot -h127.0.0.1 -P3306 -pmysql -e"shutdown;"
 ```
 ![Connect](img/WOR4.png)
