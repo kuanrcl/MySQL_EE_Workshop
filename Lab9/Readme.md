@@ -22,9 +22,22 @@ Download the latest MySQL EE Docker image from support.oracle.com (with a valid 
 Search for the MySQL Docker Image
 ![Search](img/K2.png)
 
-Once you have downloaded the docker image, upload the image to minikube VM
+Once you have downloaded the docker image, upload the image to minikube VM.
+Find out the minikube IP address, the minikube configuration is kept in your user directory
 ```
-scp -i $(minikube ssh-key) p30754936_580_Linux-x86-64.zip docker@$(minikube ip):/home/docker/
+notepad \\users\\your_name\\.minikube\\machines\\minikube\\config.json
+```
+```
+"Driver": {
+        "IPAddress": "192.168.99.103",
+```
+You need to specify the IP address, private key (id_rsa) and user name **docker** to upload the doker image to the minikube VM
+![Upload](img/K3.png)
+Use Winscp to transfer the downloaded MySQL docker image to minikube VM
+![Upload](img/K4.png)
+
+Once you have uploaded the VM, you need to import the MySQL container
+```
 ssh -i $(minikube ssh-key) docker@$(minikube ip) -- unzip p30754936_580_Linux-x86-64.zip
 ssh -i $(minikube ssh-key) docker@$(minikube ip) -- docker load -i mysql-enterprise-server-8.0.19.tar
 ssh -i $(minikube ssh-key) docker@$(minikube ip) -- docker images
