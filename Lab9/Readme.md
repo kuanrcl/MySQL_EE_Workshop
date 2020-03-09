@@ -43,6 +43,7 @@ docker load -i mysql-enterprise-server-8.0.19.tar
 docker images
 ```
 ![Docker](img/K5.png)
+
 ## Install MySQL Router
 After you have loaded the MySQL docker image, install mysql router
 ```
