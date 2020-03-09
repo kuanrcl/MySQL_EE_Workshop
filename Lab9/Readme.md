@@ -17,6 +17,11 @@ minikube start --cpus 4 --memory 4096
 ```
 ## Install MySQL Docker
 Download the latest MySQL EE Docker image from support.oracle.com (with a valid Oracle support ID)
+
+![Download](img/K1.png)
+Search for the MySQL Docker Image
+![Search](img/K2.png)
+
 Once you have downloaded the docker image, upload the image to minikube VM
 ```
 scp -i $(minikube ssh-key) p30754936_580_Linux-x86-64.zip docker@$(minikube ip):/home/docker/
