@@ -36,11 +36,15 @@ You need to specify the IP address, private key (id_rsa) and user name **docker*
 Use Winscp to transfer the downloaded MySQL docker image to minikube VM
 ![Upload](img/K4.png)
 
-Once you have uploaded the VM, you need to import the MySQL container
+Once you have uploaded the VM, you need to import the MySQL container by putty into the VM
 ```
-ssh -i $(minikube ssh-key) docker@$(minikube ip) -- unzip p30754936_580_Linux-x86-64.zip
-ssh -i $(minikube ssh-key) docker@$(minikube ip) -- docker load -i mysql-enterprise-server-8.0.19.tar
-ssh -i $(minikube ssh-key) docker@$(minikube ip) -- docker images
+unzip MySQL-8019-p30754936_580_Linux-x86-64.zip
+docker load -i mysql-enterprise-server-8.0.19.tar
+docker images
 ```
+![Dcoker](img/K5.png)
+
+
+
 
 
