@@ -1,6 +1,6 @@
 # MySQL InnoDB Cluster on Kubernetes (minikube)
-In this lab, we will use minikube to deploy MySQL InnoDB cluster. THe following guide is for Windows but the steps are similar on other platforms such as Linux or MacOS
-## Install the Kubernetes on the host OS
+In this lab, we will use minikube to deploy MySQL InnoDB cluster. THe following guide is for **Windows** but the steps are similar on other platforms such as Linux or MacOS
+## Install Kubernetes
 ### Install kubectl
 On Windows, install kubectl using the following guide:
 https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-windows
