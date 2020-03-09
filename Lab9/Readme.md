@@ -42,7 +42,28 @@ unzip MySQL-8019-p30754936_580_Linux-x86-64.zip
 docker load -i mysql-enterprise-server-8.0.19.tar
 docker images
 ```
-![Dcoker](img/K5.png)
+![Docker](img/K5.png)
+## Install MySQL Router
+After you have loaded the MySQL docker image, install mysql router
+```
+docker pull mysql/mysql-router
+```
+### Prepare MySQL datadir
+Next, create datadir for the 3 MySQL servers
+```
+sudo mkdir -p /data/backup/mysql-0 /data/backup/mysql-1 /data/backup/mysql-2 /data/db/mysql-0 /data/db/mysql-1 /data/db/mysql-2
+sudo chown -Rf docker:docker /data
+chmod -Rf ugo+xwr /data
+```
+## Create MySQL InnoDB cluster namespace
+On your Windows
+```
+kubectl create ns mysql-cluster
+```
+
+
+
+
 
 
 
