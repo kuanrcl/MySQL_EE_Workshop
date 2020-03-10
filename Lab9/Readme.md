@@ -48,7 +48,10 @@ docker images
 After you have loaded the MySQL docker image, install mysql router
 ```
 docker pull mysql/mysql-router
+dcoker images
 ```
+![Docker](img/K10.png)
+
 ### Prepare MySQL datadir
 Next, create datadir for the 3 MySQL servers
 ```
@@ -66,13 +69,13 @@ Next, create the Persistent Volume
 kubectl apply -f pvc-create.yaml
 kubectl apply -f pv-create.yaml
 ```
-![PV]img/K6.png
+![PV](img/K6.png)
 
 List the Persistent Volume created
 ```
 kubectl -ns mysql-cluster get pv
 ```
-![PV List]img/K7.png
+![PV List](img/K7.png)
 
 Create secret setting for mysql root password
 ```
@@ -83,7 +86,7 @@ Check the created secret
 ```
 kubectl -ns mysql-cluster get secret
 ```
-![secret]img/K8.png
+![secret](img/K8.png)
 
 Create the 3 nodes 
 ```
