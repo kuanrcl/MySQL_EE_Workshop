@@ -57,10 +57,51 @@ sudo chown -Rf docker:docker /data
 chmod -Rf ugo+xwr /data
 ```
 ## Create MySQL InnoDB cluster namespace
-On your Windows
+On your Windows, create the **mysql-cluster**
 ```
-kubectl create ns mysql-cluster
+kubectl create -ns mysql-cluster
 ```
+Next, create the Persistent Volume
+```
+kubectl apply -f pvc-create.yaml
+kubectl apply -f pv-create.yaml
+```
+![PV]img/K6.png
+
+List the Persistent Volume created
+```
+kubectl -ns mysql-cluster get pv
+```
+![PV List]img/K7.png
+
+Create secret setting for mysql root password
+```
+kubectl apply -f secret.yaml
+```
+
+Check the created secret
+```
+kubectl -ns mysql-cluster get secret
+```
+![secret]img/K8.png
+
+Create the 3 nodes 
+```
+kubectl apply -f node1.yaml
+kubectl apply -f node2.yaml
+kubectl apply -f node3.yaml
+kubectl apply -f service.yaml
+kubectl -ns mysql-cluster get pod
+```
+
+Once all the nodes are up and running, we are ready to configure the MySQL InnoDB cluster
+
+
+
+
+
+
+
 
 
 
