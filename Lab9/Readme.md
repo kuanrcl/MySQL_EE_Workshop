@@ -98,6 +98,7 @@ kubectl -ns mysql-cluster get pod
 ```
 
 Once all the nodes are up and running, we are ready to configure the MySQL InnoDB cluster
+![Nodes](img/K11.png)
 
 
 
