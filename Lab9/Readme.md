@@ -100,6 +100,20 @@ kubectl -ns mysql-cluster get pod
 Once all the nodes are up and running, we are ready to configure the MySQL InnoDB cluster
 ![Nodes](img/K11.png)
 
+Before we start building the InnoDB cluster, we need to make sure that **all** the ip addresses of the pods are listed in the /etc/hosts file.
+
+First of all, connect to mysql-0 to create the cluster, followed by adding mysql-1 and mysql-2 instances.
+```
+kubectl -n mysql-cluster exec -it mysql-0-5465d4b6bd-cfsgh -- mysqlsh gradmin@localhost:3306 --password=grpass -- dba create-cluster myCluster
+
+kubectl -n mysql-cluster exec -it mysql-0-5465d4b6bd-cfsgh -- mysqlsh gradmin:grpass@localhost:3306 -- cluster add-instance gradmin@mysql-1:3306 --password=grpass --recoveryMethod=clone
+
+kubectl -n mysql-cluster exec -it mysql-0-5465d4b6bd-cfsgh -- mysqlsh gradmin:grpass@localhost:3306 -- cluster add-instance gradmin@mysql-2:3306 --password=grpass --recoveryMethod=clone
+```
+
+
+
+
 
 
 
