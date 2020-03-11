@@ -15,8 +15,8 @@ MySQL Enterprise Edition Hands-on Workshop
 ### MySQL Integration
 |  | |
 | ------------- | ------------------------------------------------------- |
-| [Lab1](Lab1) | Minishift
-| [Lab2](Lab2) | Node.js using VS Code    
+| [Lab9](Lab9) | Running InnoDB cluster in Kubernetes (minikube)
+| [Lab10](Lab10) | Node.js using VS Code    
 | [Lab3](Lab3) | Using XDev API to wor with JSON
 | [Lab4](Lab4) | Java using Eclipse
 | [Lab5](Lab5) | Using Kafka with MySQL
