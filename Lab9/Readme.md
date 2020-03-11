@@ -105,13 +105,24 @@ Before we start building the InnoDB cluster, we need to make sure that **all** t
 First of all, connect to mysql-0 to create the cluster, followed by adding mysql-1 and mysql-2 instances.
 ```
 kubectl -n mysql-cluster exec -it mysql-0-5465d4b6bd-cfsgh -- mysqlsh gradmin@localhost:3306 --password=grpass -- dba create-cluster myCluster
+```
 
+You should see an error saying the MySQL can not be restarted, you can restart the pod
+```
+kubectl -n mysql-cluster delete pod mysql-0-5465d4b6bd-cfsgh
+```
+
+Next, continue with the InnoDB cluster creation by adding mysql-1 and mysql-2 instances to the cluster
+```
 kubectl -n mysql-cluster exec -it mysql-0-5465d4b6bd-cfsgh -- mysqlsh gradmin:grpass@localhost:3306 -- cluster add-instance gradmin@mysql-1:3306 --password=grpass --recoveryMethod=clone
 
 kubectl -n mysql-cluster exec -it mysql-0-5465d4b6bd-cfsgh -- mysqlsh gradmin:grpass@localhost:3306 -- cluster add-instance gradmin@mysql-2:3306 --password=grpass --recoveryMethod=clone
 ```
-
-
+Finally, your InnoDB cluster should be up and running
+```
+kubectl -n mysql-cluster exec -it mysql-0-5465d4b6bd-cfsgh -- mysqlsh gradmin:grpass@localhost:3306 -- cluster status
+```
+Done
 
 
 
