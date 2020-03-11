@@ -15,7 +15,7 @@ MySQL Enterprise Edition Hands-on Workshop
 ### MySQL Integration
 |  | |
 | ------------- | ------------------------------------------------------- |
-| [Lab9](Lab9) | Running InnoDB cluster in Kubernetes (minikube)
+| [Lab9](Lab9) | InnoDB cluster in Kubernetes (minikube)
 | [Lab10](Lab10) | Node.js using VS Code    
 | [Lab3](Lab3) | Using XDev API to wor with JSON
 | [Lab4](Lab4) | Java using Eclipse
