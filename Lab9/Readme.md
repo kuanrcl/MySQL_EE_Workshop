@@ -23,7 +23,7 @@ Search for the MySQL Docker Image
 ![Search](img/K2.png)
 
 Once you have downloaded the docker image, upload the image to minikube VM.
-Find out the minikube IP address, the minikube configuration is kept in your user directory
+Find out the minikube IP address (this IP is dynamic so each time the VM is restarted, different IP will be assigned), the minikube configuration is kept in your user directory
 ```
 notepad \\users\\your_name\\.minikube\\machines\\minikube\\config.json
 ```
