@@ -73,7 +73,7 @@ kubectl apply -f pv-create.yaml
 
 List the Persistent Volume created
 ```
-kubectl -ns mysql-cluster get pv
+kubectl -n mysql-cluster get pv
 ```
 ![PV List](img/K7.png)
 
