@@ -84,7 +84,7 @@ kubectl apply -f secret.yaml
 
 Check the created secret
 ```
-kubectl -ns mysql-cluster get secret
+kubectl -n mysql-cluster get secret
 ```
 ![secret](img/K8.png)
 
@@ -94,11 +94,46 @@ kubectl apply -f node1.yaml
 kubectl apply -f node2.yaml
 kubectl apply -f node3.yaml
 kubectl apply -f service.yaml
-kubectl -ns mysql-cluster get pod
+kubectl -n mysql-cluster get pod
 ```
 
 Once all the nodes are up and running, we are ready to configure the MySQL InnoDB cluster
 ![Nodes](img/K11.png)
+```
+kubectl -n mysql-cluster exec -it mysql-0-6fd46fdb9b-fb52c -- mysqlsh -- dba configure-instance { --socket=/var/lib/mysql/mysql.sock --user=root --password=root } --clusterAdmin=gradmin --clusterAdminPassword=grpass --restart=true --interactive=true
+```
+Repeat this for the 2 other instances
+```
+Configuring local MySQL instance listening at port 3306 for use in an InnoDB cluster...
+
+This instance reports its own address as mysql-0:3306
+Clients and other cluster members will communicate with it through this address by default. If this is not correct, the report_host MySQL system variable should be changed.
+Assuming full account name 'gradmin'@'%' for gradmin
+
+NOTE: Some configuration options need to be fixed:
++--------------------------+---------------+----------------+--------------------------------------------------+
+| Variable                 | Current Value | Required Value | Note                                             |
++--------------------------+---------------+----------------+--------------------------------------------------+
+| binlog_checksum          | CRC32         | NONE           | Update the server variable                       |
+| enforce_gtid_consistency | OFF           | ON             | Update read-only variable and restart the server |
+| gtid_mode                | OFF           | ON             | Update read-only variable and restart the server |
+| server_id                | 1             | <unique ID>    | Update read-only variable and restart the server |
++--------------------------+---------------+----------------+--------------------------------------------------+
+
+Some variables need to be changed, but cannot be done dynamically on the server.
+Do you want to perform the required configuration changes? [y/n]: y
+
+Cluster admin user 'gradmin'@'%' created.
+Configuring instance...
+The instance 'mysql-0:3306' was configured to be used in an InnoDB cluster.
+Restarting MySQL...
+ERROR: Remote restart of MySQL server failed: MySQL Error 3707 (HY000): Restart server failed (mysqld is not managed by supervisor process).
+Please restart MySQL manually
+```
+You should see an error saying the MySQL can not be restarted, you can restart the pod
+```
+kubectl -n mysql-cluster delete pod mysql-0-5465d4b6bd-cfsgh
+```
 
 Before we start building the InnoDB cluster, we need to make sure that **all** the ip addresses of the pods are listed in the /etc/hosts file.
 
@@ -107,10 +142,7 @@ First of all, connect to mysql-0 to create the cluster, followed by adding mysql
 kubectl -n mysql-cluster exec -it mysql-0-5465d4b6bd-cfsgh -- mysqlsh gradmin@localhost:3306 --password=grpass -- dba create-cluster myCluster
 ```
 
-You should see an error saying the MySQL can not be restarted, you can restart the pod
-```
-kubectl -n mysql-cluster delete pod mysql-0-5465d4b6bd-cfsgh
-```
+
 
 Next, continue with the InnoDB cluster creation by adding mysql-1 and mysql-2 instances to the cluster
 ```
