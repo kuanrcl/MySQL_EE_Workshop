@@ -62,7 +62,7 @@ chmod -Rf ugo+xwr /data
 ## Create MySQL InnoDB cluster namespace
 On your Windows, create the **mysql-cluster**
 ```
-kubectl create -ns mysql-cluster
+kubectl create ns mysql-cluster
 ```
 Next, create the Persistent Volume
 ```
