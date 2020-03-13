@@ -119,12 +119,27 @@ Open a terminal
 nodemon
 ```
 ![node](img/M3.png)
+
 ## Test the application
 Open a browser to "http://localhost:3002"
 Enter some values, voila!
+
 ![Test](img/M4.png)
 
-
+## Check the MySQL database
+mysql>
+```
+use products;
+select * from items;
++---------------------------------------------------------------------------+
+| doc                                                                       |
++---------------------------------------------------------------------------                                       |
+| {"_id": "00005e5420230000000000000006", "name": "Racket", "price": "100"} |
+| {"_id": "00005e5420230000000000000007", "name": "iPad", "price": "2000"}  |
+| {"_id": "00005e5420230000000000000008", "name": "Apple", "price": "1"}    |
+| {"_id": "00005e5420230000000000000009", "name": "Orange", "price": "1"}   |
++---------------------------------------------------------------------------+
+```
 
 
 
