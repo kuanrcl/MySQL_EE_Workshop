@@ -1,1 +1,1 @@
-We will use Kafka to send/receive messages to MySQL
+We will use HDFS with MySQL
