@@ -1,1 +1,1 @@
-We will use Splunk with MySQL
+We will use Talend with MySQL
