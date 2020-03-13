@@ -95,7 +95,9 @@ app.listen(3002, () => {
 });
 module.exports = app;
 ```
+
 ### Create handlebars called "home.handlebars"
+
 First, create a folder "views"
 ![views](img/M2.png)
 
@@ -113,6 +115,7 @@ Create the html tags in "home.handlebars"
     <button type="submit">Submit</button>
 </form>
 ```
+
 ### Run the sample application
 Open a terminal
 ```
