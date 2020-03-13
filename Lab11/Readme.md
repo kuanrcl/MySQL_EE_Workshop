@@ -1,2 +1,2 @@
-We will use Visual Studio Code with XDev API to work with JSON in MySQL
+We will use Eclipse to develop a simple Java application to MySQL
 
