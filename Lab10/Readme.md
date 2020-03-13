@@ -1,11 +1,11 @@
-### Node.js with MySQL Document Store
+# Node.js with MySQL Document Store
 We will use Visual Studio Code (VS Code) on Windows to develop a simple Node.js application using MySQL. 
 
 ## Install Visual Studio Code (with Node.js)
 First, download and install Visual Studio Code from https://code.visualstudio.com/
 Run VS Code, and create a new project "MySQL JSON" in your "C:\Users\<name>\.vscode" directory
 
-# Install essential Node.js modules
+### Install essential Node.js modules
 Next, open a "Terminal"
 ```
 npm -init
@@ -95,7 +95,7 @@ app.listen(3002, () => {
 });
 module.exports = app;
 ```
-# Create handlebars called "home.handlebars"
+### Create handlebars called "home.handlebars"
 First, create a folder "views"
 ![views](img/M2.png)
 
@@ -113,14 +113,14 @@ Create the html tags in "home.handlebars"
     <button type="submit">Submit</button>
 </form>
 ```
-## Run the sample application
+### Run the sample application
 Open a terminal
 ```
 nodemon
 ```
 ![node](img/M3.png)
 
-## Test the application
+### Test the application
 Open a browser to "http://localhost:3002"
 Enter some values, voila!
 
