@@ -16,11 +16,11 @@ MySQL Enterprise Edition Hands-on Workshop
 |  | |
 | ------------- | ------------------------------------------------------- |
 | [Lab9](Lab9) | InnoDB cluster in Kubernetes (minikube)
-| [Lab10](Lab10) | Node.js using VS Code    
-| [Lab11](Lab11) | XDev API to work with JSON in MySQL
-| [Lab12](Lab12) | Java using Eclipse
-| [Lab13](Lab13) | Using Kafka with MySQL
-| [Lab14](Lab14) | Using HDFS with MySQL
-| [Lab7](Lab7) | TBA
-| [Lab8](Lab8) | TBA
+| [Lab10](Lab10) | Node.js with XDev API using VS Code   
+| [Lab11](Lab11) | Java using Eclipse
+| [Lab12](Lab12) | Using Kafka with MySQL
+| [Lab13](Lab13) | Using HDFS with MySQL
+| [Lab14](Lab14) | TBA
+| [Lab7](Lab15) | TBA
+| [Lab8](Lab16) | TBA
 
