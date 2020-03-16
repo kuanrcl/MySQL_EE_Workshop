@@ -1,5 +1,5 @@
-# Using Kafka with MySQL
-## Install Kafka
+# Using Confluent Kafka with MySQL
+## Install Confluent Kafka
 The prerequisite of Kafka is the JVM. 
 Use the bundled JVM in MySQL, for example, export JAVA_HOME=/usr/local/mysql/enterprise/agent/java
 
@@ -49,6 +49,17 @@ Starting connect
 connect is [UP]
 Starting ksql-server
 ksql-server is [UP]
+```
+## Configure Kafka Connect to MySQL
+Install mysql connector for java by downloading from 
+### Install mysql connector for java
+Download the latest JDBC driver from https://dev.mysql.com/downloads/connector/j/
+Unzip the file 
+``` 
+cd /opt
+unzip /tmp/mysql-connector-java-8.0.19.zip
+cd $CONFLUENT_HOME/share/java/kafka-connect-jdbc
+ln -s /opt/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19.jar .
 ```
 
 
