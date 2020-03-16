@@ -9,6 +9,15 @@ cd /opt/download/lab/11-Replication/1-Replication
 . ./comm.sh
 ./00-createdb.sh
 ```
+Understand the important parameters required for replication in my.cnf. Note that the server-id must be different for both master and slave servers
+```
+log-bin=mysqllog.bin
+relay-log=relay.bin
+gtid-mode=on
+enforce-gtid-consistency
+master_info_repository=TABLE
+relay_log_info_repository=TABLE
+```
 
 ### Start MySQL instances
 ```
