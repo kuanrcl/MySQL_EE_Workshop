@@ -87,7 +87,6 @@ On MySQL (Master, 3316)
 mysql -t -uroot -h127.0.0.1 -P3316
 select @@hostname, @@port;
 show master status;
-show slave status for channel 'channel1'\G
 \q
 ```
 
