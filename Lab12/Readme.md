@@ -1,4 +1,8 @@
 # Using Confluent Kafka with MySQL
+Kafka is fast becoming one of the major components of cloud-native application architecture. In this lab, we will use Confluent Kafka to ingest data from MySQL to Kafka
+
+![Kafka](img/C2.jpg)
+
 ## Install Confluent Kafka
 The prerequisite of Kafka is the JVM. 
 Use the bundled JVM in MySQL, for example, export JAVA_HOME=/usr/local/mysql/enterprise/agent/java
