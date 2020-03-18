@@ -79,14 +79,18 @@ update_ts timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP );
 insert into foobar (c1,c2) values(1,'foo');
 \q
 ```
+
 ## Configure MySQL Connection
 ```
 ## Configure MySQL conenction
 We will create a simple JDBC connection properties to test Kafka connection to MySQL
+
 ### Edit "kafka-connect-jdbc-source.json"
 ```
 cd /opt/download/lab/kafka
 vi ./kafka-connect-jdbc-source.json 
+```
+The content of the json file as follow:
 {
         "name": "jdbc_source_mysql_foobar_01",
         "config": {
@@ -128,38 +132,13 @@ e http://docs.confluent.io/current/connect/connect-jdbc/docs/source_config_optio
                 "topic.prefix": "mysql-"
         }
 }
-```
-
 ### Load the JDBC connection 
 ```
 cd $CONFLUENT_HOME
 bin/confluent local load jdbc_source_mysql_foobar_01 -- -d /opt/download/kafka/kafka-connect-jdbc-source.json
+bin/confluent local status jdbc_source_mysql_foobar_01
 ```
 You should see the driver successfully loaded and running
-```
-The local commands are intended for a single-node development environment
-    only, NOT for production usage. https://docs.confluent.io/current/cli/index.html
-
-Warning: Install 'jq' to add support for parsing JSON
-{
-"name":"jdbc_source_mysql_foobar_01",
-"config":{"_comment":"The Kafka topic will be made up of this prefix, plus the table name  ",
-"connector.class":"io.confluent.connect.jdbc.JdbcSourceConnector",
-"key.converter":"io.confluent.connect.avro.AvroConverter",
-"key.converter.schema.registry.url":"http://localhost:8081",
-"value.converter":"io.confluent.connect.avro.AvroConverter",
-"value.converter.schema.registry.url":"http://localhost:8081",
-"connection.url":"jdbc:mysql://localhost:3306/ryan?user=root&password=mysql",
-"table.whitelist":"foobar",
-"mode":"timestamp",
-"timestamp.column.name":"update_ts",
-"validate.non.null":"false",
-"topic.prefix":"mysql-",
-"name":"jdbc_source_mysql_foobar_01"},
-"tasks":[],
-"type":"source"
-}
-```
 
 
 
