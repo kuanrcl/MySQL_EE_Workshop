@@ -22,5 +22,6 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab13](Lab13) | Using HDFS with MySQL
 | [Lab14](Lab14) | Using Talend with MySQL
 | [Lab15](Lab15) | Using Splunk with MySQL
-| [Lab16](Lab16) | Using ML with MySQL
+| [Lab16](Lab16) | Using Google TensorFlow with MySQL
+| [Lab17](Lab17) | Using Elastic Search with MySQL
 
