@@ -6,9 +6,11 @@ Download and install Telend Open Studio on Windows from https://www.talend.com/p
 Talend Open Studio (TOS) is an Eclipse-based tools. 
 ### Install additional plugins
 Once you have installed TOS, run TOS
+
 ![Install](img/T1.png)
 
-You will be prompted to install additional features/plugins. Go ahead to install the features
+You will be prompted to install additional features/plugins. Go ahead to install the **Required third-party libraries**. Optionally, you can install the **Optional third-party libraries** (It will take quite a bit of time to install both the third-party libraries)
+
 ![Features](img/T7.png)
 
 
