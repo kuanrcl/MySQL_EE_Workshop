@@ -34,13 +34,44 @@ You will be prompted for user id and password you created when downloading from 
 You will be prompted to "Restart" after the installation
 ![restart[(img/S9.png)
 
-Once restarted, click on "Splunk Apps" on Home page, click on "Spunk DB Connect"->"Configuration"->"Settings"
+## Install Splunk Add-on for MySQL
+Click on Splunk App and search for "mysql", and clink on "Install"
+![mysql](img/S9.png)
+
+You will be prompted to "Restart" after the installation
+
+## Configure Splunk DB Connect 
+Once restarted, click on "Splunk Apps" on Home page, click on "Spunk DB Connect". The first time you run "Splunk DB Connect", 
+you would need configure the basic settings
+![DBConnect](img/S15.png)
+
 Enter the JVM location: /opt/mysql/enterprise/agent/java
 ![jvm](img/S13.png)
 
-Click on Drivers, 
+Click on Drivers, you should see MySQL Driver not installed. Install the MySQL driver in Splunk
+```
+cd /usr/local/splunk/etc/apps/splunk_app_db_connect
+ln -s /opt/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19.jar .
+```
+Click of the "Reload"
+![Reload](img/S11.png)
 
-## Install Splunk Add-on for MySQL
+## Configure MySQL connection
+Still in "Splunk DB Connect" page, click on "Databases"->"Configurations"->"New Connection"
+Specify the following MySQL information
+![mysql](img/S14.png)
+
+## Analyze MySQL logs
+Once the MySQL configuration is completed, you should be able to see all the pre-defined Data Input
+![data](img/S16.png)
+
+Pick on one of the data input, for example, "Active Transaction", and click on "Find Events"
+![event](img/S17.png)
+
+Voila!
+
+
+
 
 
 
