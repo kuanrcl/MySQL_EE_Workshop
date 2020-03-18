@@ -83,7 +83,7 @@ Age and state
 }
 '
 ```
-## Load the JSON docs into MySQL
+## Load the json docs into MySQL 
 Now we want to import the same accounts.json into MySQL
 ### Create the elastic database
 mysql>
@@ -111,3 +111,55 @@ use elastic;
 create table accounts (id int not null auto_increment, doc json not null, primary key (id));
 load data infile 'accounts_noindex.json' into table accounts(doc);
 ```
+## Configure Logstash to import json docs from MySQL into Elasticsearch
+Download and install Logstash from https://www.elastic.co/downloads/logstash. Select the TAR format
+```
+cd /opt
+tar zxvf /tmp/logstash-7.6.1.tar.gz /opt/
+sudo ln -s /opt/logstash-7.6.1.tar.gz /usr/local/logstash
+```
+Create a logstash-mysql.conf file to connect to MySQL and load the json data into Elasticsearch
+```
+input {
+        jdbc {
+                jdbc_connection_string => "jdbc:mysql://127.0.0.1:3306/elastic"
+                jdbc_user => "demo"
+                jdbc_password => "password"
+                jdbc_driver_library => "/opt/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19.jar"
+                jdbc_driver_class => "com.mysql.jdbc.Driver"
+                statement=>"SELECT doc from accounts"
+        }
+
+}
+
+filter {
+        json {
+                source => "doc"
+        }
+}
+output {
+        stdout
+        {
+                codec => json_lines
+        }
+        elasticsearch {
+                hosts => ["localhost:9200"]
+                index => "mysql_accounts_index"
+        }
+}
+```
+## Start logstash and create the index
+```
+cd /usr/local/logstash
+bin/logstash -f config/logstash-mysql.conf &
+```
+You should see a lot of log messges on your terminal that logstash is loading data and creating index
+Next, you can start using Elasticsearch to search the newly created index on data loaded from MySQL
+```
+curl -X GET "localhost:9200/bank/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": { "match": { "firstname": "Barnette" } }
+}
+'
+```
+Awesome!
