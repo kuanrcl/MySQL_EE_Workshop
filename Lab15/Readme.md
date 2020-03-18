@@ -18,6 +18,7 @@ Password must contain at least:
    * 8 total printable ASCII character(s).
 ```
 Once installed, you can point your browser to http://localhost:8000
+
 ![portal](img/S1.png)
 
 
