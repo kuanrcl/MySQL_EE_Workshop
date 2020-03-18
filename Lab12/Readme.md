@@ -81,7 +81,7 @@ insert into foobar (c1,c2) values(1,'foo');
 ```
 
 ## Configure MySQL Connection
-```
+
 ## Configure MySQL conenction
 We will create a simple JDBC connection properties to test Kafka connection to MySQL
 
@@ -91,6 +91,7 @@ cd /opt/download/lab/kafka
 vi ./kafka-connect-jdbc-source.json 
 ```
 The content of the json file as follow:
+```
 {
         "name": "jdbc_source_mysql_foobar_01",
         "config": {
@@ -118,8 +119,7 @@ ed. NB Schema Registry and Avro serialiser are both part of Confluent Platform."
                 "_comment": "Which table(s) to include",
                 "table.whitelist": "foobar",
 
-                "_comment": "Pull all rows based on an timestamp column. You can also do bulk or incrementing column-based extracts. For more information, se
-e http://docs.confluent.io/current/connect/connect-jdbc/docs/source_config_options.html#mode",
+                "_comment": "Pull all rows based on an timestamp column. You can also do bulk or incrementing column-based extracts. For more information, see http://docs.confluent.io/current/connect/connect-jdbc/docs/source_config_options.html#mode",
                 "mode": "timestamp",
 
                 "_comment": "Which column has the timestamp value to use?  ",
@@ -132,6 +132,7 @@ e http://docs.confluent.io/current/connect/connect-jdbc/docs/source_config_optio
                 "topic.prefix": "mysql-"
         }
 }
+```
 ### Load the JDBC connection 
 ```
 cd $CONFLUENT_HOME
@@ -139,6 +140,54 @@ bin/confluent local load jdbc_source_mysql_foobar_01 -- -d /opt/download/kafka/k
 bin/confluent local status jdbc_source_mysql_foobar_01
 ```
 You should see the driver successfully loaded and running
+```
+{
+  "name": "jdbc_source_mysql_foobar_01",
+  "connector": {
+    "state": "RUNNING",
+    "worker_id": "127.0.0.1:8083"
+  },
+  "tasks": [
+    {
+      "state": "RUNNING",
+      "id": 0,
+      "worker_id": "127.0.0.1:8083"
+    }
+  ]
+}
+```
+### Connect to Kafka and start streaming from MySQL
+Use Terminal #1
+Use avro-console-consumer to check the topics
+```
+./bin/kafka-avro-console-consumer \
+--bootstrap-server localhost:9092 \
+--property schema.registry.url=http://localhost:8081 \
+--property print.key=true \
+--from-beginning \
+--topic mysql-foobar
+```
+You should see the following message
+```
+null    {"c1":{"int":1},"c2":{"string":"foo"},"create_ts":1501796305000,"update_ts":1501796305000}
+```
+Use Terminal #2
+mysql>
+```
+use ryan;
+insert into foobar (c1,c2) values(2,'foo');
+insert into foobar (c1,c2) values(3,'foo');
+update foobar set c2='bar' where c1=1;
+```
+On Terminal #1
+You should see the following:
+```
+null    {"c1":{"int":1},"c2":{"string":"foo"},"create_ts":1501796305000,"update_ts":1501796305000}
+null    {"c1":{"int":2},"c2":{"string":"foo"},"create_ts":1501796665000,"update_ts":1501796665000}
+null    {"c1":{"int":3},"c2":{"string":"foo"},"create_ts":1501796670000,"update_ts":1501796670000}
+null    {"c1":{"int":1},"c2":{"string":"bar"},"create_ts":1501796305000,"update_ts":1501796692000}
+```
+Awesome!
 
 
 
