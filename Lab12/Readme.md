@@ -86,48 +86,82 @@ We will create a simple JDBC connection properties to test Kafka connection to M
 ### Edit "kafka-connect-jdbc-source.json"
 ```
 cd /opt/download/lab/kafka
-cat >> ./kafka-connect-jdbc-source.json << EOF
+vi ./kafka-connect-jdbc-source.json 
 {
         "name": "jdbc_source_mysql_foobar_01",
         "config": {
                 "_comment": "The JDBC connector class. Don't change this if you want to use the JDBC Source.",
                 "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
-                "_comment": "How to serialise the value of keys - here use the Confluent Avro serialiser. \
-                Note that the JDBC Source Connector always returns null for the key ",
+
+                "_comment": "How to serialise the value of keys - here use the Confluent Avro serialiser. Note that the JDBC Source Connector always returns
+null for the key ",
                 "key.converter": "io.confluent.connect.avro.AvroConverter",
-                "_comment": "Since we're using Avro serialisation, we need to specify the Confluent schema registry \
-                at which the created schema is to be stored. NB Schema Registry and Avro serialiser are both part of \
-                Confluent Platform.",
+
+                "_comment": "Since we're using Avro serialisation, we need to specify the Confluent schema registry at which the created schema is to be stor
+ed. NB Schema Registry and Avro serialiser are both part of Confluent Platform.",
                 "key.converter.schema.registry.url": "http://localhost:8081",
-                "_comment": "As above, but for the value of the message. Note that these key/value serialisation settings \
-                can be set globally for Connect and thus omitted for individual connector configs to make them shorter and clearer",
+
+                "_comment": "As above, but for the value of the message. Note that these key/value serialisation settings can be set globally for Connect and
+ thus omitted for individual connector configs to make them shorter and clearer",
                 "value.converter": "io.confluent.connect.avro.AvroConverter",
                 "value.converter.schema.registry.url": "http://localhost:8081",
+
+
                 "_comment": " --- JDBC-specific configuration below here  --- ",
                 "_comment": "JDBC connection URL. This will vary by RDBMS. Consult your manufacturer's handbook for more information",
                 "connection.url": "jdbc:mysql://localhost:3306/ryan?user=root&password=mysql",
+
                 "_comment": "Which table(s) to include",
                 "table.whitelist": "foobar",
-                "_comment": "Pull all rows based on an timestamp column. You can also do bulk or incrementing column-based \
-                extracts. For more information, see \
-                http://docs.confluent.io/current/connect/connect-jdbc/docs/source_config_options.html#mode",
+
+                "_comment": "Pull all rows based on an timestamp column. You can also do bulk or incrementing column-based extracts. For more information, se
+e http://docs.confluent.io/current/connect/connect-jdbc/docs/source_config_options.html#mode",
                 "mode": "timestamp",
+
                 "_comment": "Which column has the timestamp value to use?  ",
                 "timestamp.column.name": "update_ts",
+
                 "_comment": "If the column is not defined as NOT NULL, tell the connector to ignore this  ",
                 "validate.non.null": "false",
+
                 "_comment": "The Kafka topic will be made up of this prefix, plus the table name  ",
                 "topic.prefix": "mysql-"
         }
 }
-EOF
 ```
+
 ### Load the JDBC connection 
 ```
 cd $CONFLUENT_HOME
 bin/confluent local load jdbc_source_mysql_foobar_01 -- -d /opt/download/kafka/kafka-connect-jdbc-source.json
 ```
-You should 
+You should see the driver successfully loaded and running
+```
+The local commands are intended for a single-node development environment
+    only, NOT for production usage. https://docs.confluent.io/current/cli/index.html
+
+Warning: Install 'jq' to add support for parsing JSON
+{
+"name":"jdbc_source_mysql_foobar_01",
+"config":{"_comment":"The Kafka topic will be made up of this prefix, plus the table name  ",
+"connector.class":"io.confluent.connect.jdbc.JdbcSourceConnector",
+"key.converter":"io.confluent.connect.avro.AvroConverter",
+"key.converter.schema.registry.url":"http://localhost:8081",
+"value.converter":"io.confluent.connect.avro.AvroConverter",
+"value.converter.schema.registry.url":"http://localhost:8081",
+"connection.url":"jdbc:mysql://localhost:3306/ryan?user=root&password=mysql",
+"table.whitelist":"foobar",
+"mode":"timestamp",
+"timestamp.column.name":"update_ts",
+"validate.non.null":"false",
+"topic.prefix":"mysql-",
+"name":"jdbc_source_mysql_foobar_01"},
+"tasks":[],
+"type":"source"
+}
+```
+
+
 
 
 
