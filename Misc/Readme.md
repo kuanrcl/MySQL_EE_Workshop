@@ -218,7 +218,17 @@ mcm> get --include-defaults DataMemory:ndbmtd mycluster1;
 2 rows in set (0.08 sec)
 
 get replicate_ignore_table:mysqld mycluster1;
+mcm> get replicate_ignore_table:mysqld mycluster1;
+Empty set (0.11 sec)
+
 get -d wait_timeout:mysqld mycluster1;
+mcm> get -d wait_timeout:mysqld mycluster1;
++--------------+-------+----------+---------+----------+---------+---------+---------+
+| Name         | Value | Process1 | NodeId1 | Process2 | NodeId2 | Level   | Comment |
++--------------+-------+----------+---------+----------+---------+---------+---------+
+| wait_timeout | 28800 | mysqld   | 49      |          |         | Default |         |
++--------------+-------+----------+---------+----------+---------+---------+---------+
+1 row in set (0.03 sec)
 
 list sites;
 mcm> list sites;
