@@ -82,6 +82,17 @@ mcm> get Hostname:ndbmtd mycluster1;
 2 rows in set (0.11 sec)
 
 get H* mycluster1;
+mcm> get H* mycluster1;
++----------+---------+----------+---------+----------+---------+-------+-----------+
+| Name     | Value   | Process1 | NodeId1 | Process2 | NodeId2 | Level | Comment   |
++----------+---------+----------+---------+----------+---------+-------+-----------+
+| HostName | primary | ndb_mgmd | 50      |          |         |       | Read only |
+| HostName | primary | ndbmtd   | 1       |          |         |       | Read only |
+| HostName | primary | ndbmtd   | 2       |          |         |       | Read only |
+| HostName | primary | mysqld   | 49      |          |         |       | Read only |
++----------+---------+----------+---------+----------+---------+-------+-----------+
+4 rows in set (0.04 sec)
+
 
 get DataMemory:ndbmtd mycluster1;
 mcm> get DataMemory:ndbmtd mycluster1;
@@ -178,15 +189,83 @@ mcm> get -d ndb*:mysqld mycluster1;
 
 
 get -d *memory*:ndbmtd:1 mycluster1;
+mcm> get -d *memory*:ndbmtd:1 mycluster1;
++-------------------------+-----------+----------+---------+----------+---------+---------+---------+
+| Name                    | Value     | Process1 | NodeId1 | Process2 | NodeId2 | Level   | Comment |
++-------------------------+-----------+----------+---------+----------+---------+---------+---------+
+| BackupMemory            | 33554432  | ndbmtd   | 1       |          |         | Default |         |
+| DataMemory              | 60M       | ndbmtd   | 1       |          |         | Process |         |
+| DiskPageBufferMemory    | 67108864  | ndbmtd   | 1       |          |         | Default |         |
+| ExtraSendBufferMemory   | 0         | ndbmtd   | 1       |          |         | Default |         |
+| IndexMemory             | 0         | ndbmtd   | 1       |          |         | Default |         |
+| LockPagesInMainMemory   | 0         | ndbmtd   | 1       |          |         | Default |         |
+| SharedGlobalMemory      | 134217728 | ndbmtd   | 1       |          |         | Default |         |
+| StringMemory            | 25        | ndbmtd   | 1       |          |         | Default |         |
+| TotalSendBufferMemory   | 0         | ndbmtd   | 1       |          |         | Default |         |
+| TransactionBufferMemory | 1048576   | ndbmtd   | 1       |          |         | Default |         |
++-------------------------+-----------+----------+---------+----------+---------+---------+---------+
+10 rows in set (0.03 sec)
+
+
 get --include-defaults DataMemory:ndbmtd mycluster1;
+mcm> get --include-defaults DataMemory:ndbmtd mycluster1;
++------------+-------+----------+---------+----------+---------+---------+---------+
+| Name       | Value | Process1 | NodeId1 | Process2 | NodeId2 | Level   | Comment |
++------------+-------+----------+---------+----------+---------+---------+---------+
+| DataMemory | 60M   | ndbmtd   | 1       |          |         | Process |         |
+| DataMemory | 60M   | ndbmtd   | 2       |          |         | Process |         |
++------------+-------+----------+---------+----------+---------+---------+---------+
+2 rows in set (0.08 sec)
+
 get replicate_ignore_table:mysqld mycluster1;
 get -d wait_timeout:mysqld mycluster1;
 
 list sites;
+mcm> list sites;
++--------+------+-------+---------+
+| Site   | Port | Local | Hosts   |
++--------+------+-------+---------+
+| mysite | 1862 | Local | primary |
++--------+------+-------+---------+
+1 row in set (0.03 sec)
+
+
 list clusters mysite;
-list cluster mycluster1;
+
+mcm> list clusters mysite;
++------------+-------------+
+| Cluster    | Package     |
++------------+-------------+
+| mycluster1 | cluster.pkg |
++------------+-------------+
+1 row in set (0.02 sec)
+
+
 list nextnodeids mycluster1;
+mcm> list nextnodeids mycluster1;
++-----------+--------------+-------------+--------------------------+
+| Category  | NodeId Range | Next NodeId | Processes                |
++-----------+--------------+-------------+--------------------------+
+| Datanodes | 1  - 48      | 3           | ndbd, ndbmtd             |
+| Others    | 49 - 255     | 54          | ndb_mgmd, mysqld, ndbapi |
++-----------+--------------+-------------+--------------------------+
+2 rows in set (0.07 sec)
+
 list processes mycluster1;
+mcm> list processes mycluster1;
++--------+----------+---------+
+| NodeId | Name     | Host    |
++--------+----------+---------+
+| 50     | ndb_mgmd | primary |
+| 1      | ndbmtd   | primary |
+| 2      | ndbmtd   | primary |
+| 49     | mysqld   | primary |
+| 51     | ndbapi   | *       |
+| 52     | ndbapi   | *       |
+| 53     | ndbapi   | *       |
++--------+----------+---------+
+7 rows in set (0.02 sec)
+
 
 mcm> list processes mycluster1;
 +--------+----------+---------+
@@ -250,6 +329,14 @@ mcm> show status --cluster mycluster1;
 1 row in set (0.06 sec)
 
 show status --operation mycluster1;
+mcm> show status --operation mycluster1;
++---------------+----------+--------------+
+| Command       | Status   | Description  |
++---------------+----------+--------------+
+| start cluster | finished | <no message> |
++---------------+----------+--------------+
+1 row in set (0.05 sec)
+
 
 show status --backup mycluster1;
 
@@ -287,6 +374,14 @@ mcm> show status --process mycluster1;
 7 rows in set (0.08 sec)
 
 show status --progress mycluster1;
+mcm> show status --progress mycluster1;
++---------------+----------+----------+
+| Command       | Status   | Progress |
++---------------+----------+----------+
+| start cluster | finished | 100%     |
++---------------+----------+----------+
+1 row in set (0.04 sec)
+
 ```
 
 
