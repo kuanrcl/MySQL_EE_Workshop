@@ -9,7 +9,9 @@ Include the dependencies of **Web, JPA, MySQL**, generate the project zipfile
 
 ## Edit the code
 Unzip the zipfile downloaded to a directory, and open the project in Eclipse
-Edit the following java classes
+![Eclipse](img/SB4.png)
+
+Edit the following java classes:
 
 AccessingDataMysqlApplication.java
 ```
