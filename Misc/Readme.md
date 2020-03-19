@@ -22,13 +22,161 @@ vi /etc/samba/smb.conf
 mcm>
 ```
 get mycluster1;
+
+mcm> get mycluster1;
++-----------------------------+------------------------------------------------------+----------+---------+----------+---------+---------+-----------+
+| Name                        | Value                                                | Process1 | NodeId1 | Process2 | NodeId2 | Level   | Comment   |
++-----------------------------+------------------------------------------------------+----------+---------+----------+---------+---------+-----------+
+| Name                        | mycluster1                                           |          |         |          |         |         | Read only |
+| DataDir                     | /home/mysql/mcm/mcm_data/clusters/mycluster1/50/data | ndb_mgmd | 50      |          |         |         |           |
+| HostName                    | primary                                              | ndb_mgmd | 50      |          |         |         | Read only |
+| NodeId                      | 50                                                   | ndb_mgmd | 50      |          |         |         | Read only |
+| Arbitration                 | waitexternal                                         | ndbmtd   | 1       |          |         | Process |           |
+| DataDir                     | /home/mysql/mcm/mcm_data/clusters/mycluster1/1/data  | ndbmtd   | 1       |          |         |         |           |
+| DataMemory                  | 60M                                                  | ndbmtd   | 1       |          |         | Process |           |
+| HostName                    | primary                                              | ndbmtd   | 1       |          |         |         | Read only |
+| MaxNoOfConcurrentOperations | 100000                                               | ndbmtd   | 1       |          |         | Process |           |
+| NodeId                      | 1                                                    | ndbmtd   | 1       |          |         |         | Read only |
+| Arbitration                 | waitexternal                                         | ndbmtd   | 2       |          |         | Process |           |
+| DataDir                     | /home/mysql/mcm/mcm_data/clusters/mycluster1/2/data  | ndbmtd   | 2       |          |         |         |           |
+| DataMemory                  | 60M                                                  | ndbmtd   | 2       |          |         | Process |           |
+| HostName                    | primary                                              | ndbmtd   | 2       |          |         |         | Read only |
+| MaxNoOfConcurrentOperations | 100000                                               | ndbmtd   | 2       |          |         | Process |           |
+| NodeId                      | 2                                                    | ndbmtd   | 2       |          |         |         | Read only |
+| datadir                     | /home/mysql/mcm/mcm_data/clusters/mycluster1/49/data | mysqld   | 49      |          |         |         |           |
+| HostName                    | primary                                              | mysqld   | 49      |          |         |         | Read only |
+| ndb_nodeid                  | 49                                                   | mysqld   | 49      |          |         |         | Read only |
+| ndbcluster                  | on                                                   | mysqld   | 49      |          |         |         | Read only |
+| NodeId                      | 49                                                   | mysqld   | 49      |          |         |         | Read only |
+| port                        | 3316                                                 | mysqld   | 49      |          |         | Process |           |
+| socket                      | /tmp/mysql.mycluster1.49.sock                        | mysqld   | 49      |          |         |         |           |
+| tmpdir                      | /home/mysql/mcm/mcm_data/clusters/mycluster1/49/tmp  | mysqld   | 49      |          |         |         |           |
+| NodeId                      | 51                                                   | ndbapi   | 51      |          |         |         | Read only |
+| NodeId                      | 52                                                   | ndbapi   | 52      |          |         |         | Read only |
+| NodeId                      | 53                                                   | ndbapi   | 53      |          |         |         | Read only |
++-----------------------------+------------------------------------------------------+----------+---------+----------+---------+---------+-----------+
+27 rows in set (0.02 sec)
+
+
 get hostname mycluster1;
-get Hostname:ndbd mycluster1;
+mcm> get hostname mycluster1;
++----------+---------+----------+---------+----------+---------+-------+-----------+
+| Name     | Value   | Process1 | NodeId1 | Process2 | NodeId2 | Level | Comment   |
++----------+---------+----------+---------+----------+---------+-------+-----------+
+| HostName | primary | ndb_mgmd | 50      |          |         |       | Read only |
+| HostName | primary | ndbmtd   | 1       |          |         |       | Read only |
+| HostName | primary | ndbmtd   | 2       |          |         |       | Read only |
+| HostName | primary | mysqld   | 49      |          |         |       | Read only |
++----------+---------+----------+---------+----------+---------+-------+-----------+
+4 rows in set (0.11 sec)
+
+
+get Hostname:ndbmtd mycluster1;
+mcm> get Hostname:ndbmtd mycluster1;
++----------+---------+----------+---------+----------+---------+-------+-----------+
+| Name     | Value   | Process1 | NodeId1 | Process2 | NodeId2 | Level | Comment   |
++----------+---------+----------+---------+----------+---------+-------+-----------+
+| HostName | primary | ndbmtd   | 1       |          |         |       | Read only |
+| HostName | primary | ndbmtd   | 2       |          |         |       | Read only |
++----------+---------+----------+---------+----------+---------+-------+-----------+
+2 rows in set (0.11 sec)
+
 get H* mycluster1;
+
 get DataMemory:ndbmtd mycluster1;
+mcm> get DataMemory:ndbmtd mycluster1;
++------------+-------+----------+---------+----------+---------+---------+---------+
+| Name       | Value | Process1 | NodeId1 | Process2 | NodeId2 | Level   | Comment |
++------------+-------+----------+---------+----------+---------+---------+---------+
+| DataMemory | 60M   | ndbmtd   | 1       |          |         | Process |         |
+| DataMemory | 60M   | ndbmtd   | 2       |          |         | Process |         |
++------------+-------+----------+---------+----------+---------+---------+---------+
+2 rows in set (0.06 sec)
+
 
 get *:mysqld mycluster1;
+mcm> get *:mysqld mycluster1;
++------------+------------------------------------------------------+----------+---------+----------+---------+---------+-----------+
+| Name       | Value                                                | Process1 | NodeId1 | Process2 | NodeId2 | Level   | Comment   |
++------------+------------------------------------------------------+----------+---------+----------+---------+---------+-----------+
+| datadir    | /home/mysql/mcm/mcm_data/clusters/mycluster1/49/data | mysqld   | 49      |          |         |         |           |
+| HostName   | primary                                              | mysqld   | 49      |          |         |         | Read only |
+| ndb_nodeid | 49                                                   | mysqld   | 49      |          |         |         | Read only |
+| ndbcluster | on                                                   | mysqld   | 49      |          |         |         | Read only |
+| NodeId     | 49                                                   | mysqld   | 49      |          |         |         | Read only |
+| port       | 3316                                                 | mysqld   | 49      |          |         | Process |           |
+| socket     | /tmp/mysql.mycluster1.49.sock                        | mysqld   | 49      |          |         |         |           |
+| tmpdir     | /home/mysql/mcm/mcm_data/clusters/mycluster1/49/tmp  | mysqld   | 49      |          |         |         |           |
++------------+------------------------------------------------------+----------+---------+----------+---------+---------+-----------+
+8 rows in set (0.05 sec)
+
 get -d ndb*:mysqld mycluster1;
+mcm> get -d ndb*:mysqld mycluster1;
++--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+---------+----------+---------+---------+-----------+
+| Name                                 | Value                                                                                                                                                                                                                                                            | Process1 | NodeId1 | Process2 | NodeId2 | Level   | Comment   |
++--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+---------+----------+---------+---------+-----------+
+| ndb_allow_copying_alter_table        | true                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_autoincrement_prefetch_sz        | 1                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_batch_size                       | 32768                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_blob_read_batch_bytes            | 65536                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_blob_write_batch_bytes           | 65536                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_cache_check_time                 | 0                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_cluster_connection_pool          | 1                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_cluster_connection_pool_nodeids  | NULL                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_connectstring                    |                                                                                                                                                                                                                                                                  | mysqld   | 49      |          |         | Default |           |
+| ndb_data_node_neighbour              | 0                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_dbg_check_shares                 | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_default_column_format            | FIXED                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_deferred_constraints             | 0                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_distribution                     | keyhash                                                                                                                                                                                                                                                          | mysqld   | 49      |          |         | Default |           |
+| ndb_eventbuffer_free_percent         | 20                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         | Default |           |
+| ndb_eventbuffer_max_alloc            | 0                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_extra_logging                    | 1                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_force_send                       | true                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_fully_replicated                 | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_index_stat_enable                | true                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_index_stat_option                | loop_enable=1000ms,loop_idle=1000ms,loop_busy=100ms,update_batch=1,read_batch=4,idle_batch=32,check_batch=8,check_delay=10m,delete_batch=8,clean_delay=1m,error_batch=4,error_delay=1m,evict_batch=8,evict_delay=1m,cache_limit=32M,cache_lowpct=90,zero_total=0 | mysqld   | 49      |          |         | Default |           |
+| ndb_join_pushdown                    | true                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_log_apply_status                 | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_log_bin                          | true                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_log_binlog_index                 | true                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_log_empty_epochs                 | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_log_empty_update                 | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_log_exclusive_reads              | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_log_orig                         | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_log_transaction_id               | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_log_update_as_write              | true                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_log_update_minimal               | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_log_updated_only                 | true                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_mgmd_host                        | localhost:1186                                                                                                                                                                                                                                                   | mysqld   | 49      |          |         | Default |           |
+| ndb_nodeid                           | 49                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         |         | Read only |
+| ndb_optimization_delay               | 10                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         | Default |           |
+| ndb_optimized_node_selection         | 3                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_read_backup                      | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_recv_thread_activation_threshold | 8                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_recv_thread_cpu_mask             |                                                                                                                                                                                                                                                                  | mysqld   | 49      |          |         | Default |           |
+| ndb_report_thresh_binlog_epoch_slip  | 10                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         | Default |           |
+| ndb_report_thresh_binlog_mem_usage   | 10                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         | Default |           |
+| ndb_row_checksum                     | 1                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndb_show_foreign_key_mock_tables     | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_slave_conflict_role              | none                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_table_no_logging                 | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_table_temporary                  | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_transid_mysql_connection_map     | on                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         | Default |           |
+| ndb_use_copying_alter_table          | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_use_exact_count                  | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
+| ndb_use_transactions                 | true                                                                                                                                                                                                                                                             | mysqld   | 49      |          |         | Default |           |
+| ndb_wait_connected                   | 30                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         | Default |           |
+| ndb_wait_setup                       | 30                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         | Default |           |
+| ndbcluster                           | on                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         |         | Read only |
+| ndbinfo                              | on                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         | Default |           |
+| ndbinfo_max_bytes                    | 0                                                                                                                                                                                                                                                                | mysqld   | 49      |          |         | Default |           |
+| ndbinfo_max_rows                     | 10                                                                                                                                                                                                                                                               | mysqld   | 49      |          |         | Default |           |
+| ndbinfo_show_hidden                  | false                                                                                                                                                                                                                                                            | mysqld   | 49      |          |         | Default |           |
++--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+---------+----------+---------+---------+-----------+
+58 rows in set (0.08 sec)
+
+
 get -d *memory*:ndbmtd:1 mycluster1;
 get --include-defaults DataMemory:ndbmtd mycluster1;
 get replicate_ignore_table:mysqld mycluster1;
@@ -39,6 +187,7 @@ list clusters mysite;
 list cluster mycluster1;
 list nextnodeids mycluster1;
 list processes mycluster1;
+
 mcm> list processes mycluster1;
 +--------+----------+---------+
 | NodeId | Name     | Host    |
