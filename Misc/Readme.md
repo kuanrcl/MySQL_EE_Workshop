@@ -207,6 +207,23 @@ mcm> get -d *memory*:ndbmtd:1 mycluster1;
 10 rows in set (0.03 sec)
 
 
+get -d port:mysqld mycluster1;
++------+-------+----------+---------+----------+---------+---------+---------+
+| Name | Value | Process1 | NodeId1 | Process2 | NodeId2 | Level   | Comment |
++------+-------+----------+---------+----------+---------+---------+---------+
+| port | 3316  | mysqld   | 49      |          |         | Process |         |
++------+-------+----------+---------+----------+---------+---------+---------+
+1 row in set (0.05 sec)
+
+get -d default_storage_engine mycluster1;
++------------------------+--------+----------+---------+----------+---------+---------+---------+
+| Name                   | Value  | Process1 | NodeId1 | Process2 | NodeId2 | Level   | Comment |
++------------------------+--------+----------+---------+----------+---------+---------+---------+
+| default_storage_engine | innodb | mysqld   | 49      |          |         | Default |         |
++------------------------+--------+----------+---------+----------+---------+---------+---------+
+1 row in set (0.06 sec)
+
+
 get --include-defaults DataMemory:ndbmtd mycluster1;
 mcm> get --include-defaults DataMemory:ndbmtd mycluster1;
 +------------+-------+----------+---------+----------+---------+---------+---------+
