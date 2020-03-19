@@ -423,7 +423,37 @@ mcm> show status --progress mycluster1;
 1 row in set (0.04 sec)
 ```
 
+### Start/Stop Process
+```
+stop process 51 mycluster1; 
+start process 51 mycluster1; 
+```
 
+### Rolling Upgrade
+```
+mcm
+add package --basedir=/opt/mcm/cluster7.6.11 7.6.11;
+upgrade cluster --package=7.6.11 mycluster1;
+delete package 7.6.8;
+list packages mysite;
+quit
+```
+
+### Add new hosts
+```
+mcm
+add hosts --hosts=xxxx mysite;
+add package --hosts=xxxx --basedir=/opt/mcm/cluster7.6.11 7.6.11;
+add process -R ndbmtd@x.x.x.x,ndbmtd@y.y.y.y,mysqld@z.z.z.z mycluster1;
+start process --added mycluster1;
+quit
+```
+### mysqlslap
+```
+/opt/mcm/cluster/bin/mysqlslap --protocol tcp -h 10.0.10.10 --concurrency=50 --auto-generate-sql-execute-number 10000 \
+--number-int-cols=2 --number-char-cols=3 --auto-generate-sql --engine=ndb --no-drop --auto-generate-sql-add-autoincrement \
+--auto-generate-sql-load-type=write --auto-generate-sql-secondary-indexes=2 --auto-generate-sql-unique-write-number=500
+```
 
 
 
