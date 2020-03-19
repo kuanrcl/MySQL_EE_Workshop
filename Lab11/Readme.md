@@ -4,7 +4,7 @@ In this lab, we will use a very simple Spring Boot application to store and retr
 
 ## Create the skeleton Spring Boot application
 Browse to http://start.spring.io to create the initial Spring Boot skeleton
-Include the dependencies of **Web, JPA, MySQL**, generate the project zipfile
+Include the dependencies of **Web, Data JPA, MySQL**, generate the project zipfile
 ![spring](img/SB1.png)
 
 ## Edit the code
