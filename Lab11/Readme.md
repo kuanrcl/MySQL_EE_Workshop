@@ -152,8 +152,10 @@ mvnw spring-boot:run
 You can use either **curl** or **Postman** to test the 2 services (GET, POST)
 
 ### Insert new record
+
 Use **Postman** to add a new record
-![Add](img/SB2.png)
+
+![Add](img/SB5.png)
 
 ### Retrieve records
 Use curl to GET from MySQL
