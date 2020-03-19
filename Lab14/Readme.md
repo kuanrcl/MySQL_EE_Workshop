@@ -48,8 +48,33 @@ Next select all the remaining fields, and drag them to the **Fields to extract**
 
 ## Create a DB Connection to MySQL
 Create a DB Connection object to MySQL
-1. 
+1. Select **DB Connections**, right click to **Create connection**
+![C1](img/T20.png)
 
+2. Specify MySQL connection parameters and test the connection
+![C2](img/T21.png)
+
+## Create the data processing pipeline
+Now it is time to use the 2 objects we created earlier to build a data processing pipeline
+1. Select **accounts** (File Json object), **mysql** (DB Connections object), drop them to the **Job Designer** panel
+2. Select **tLogRow** and **tMap** objects in the **Palette** on the right panel, drop them to the **Job Designer** panel
+3. Wire up connections from **accounts** to **mysql**, we will just try to process 1 row
+![Pipeline](img/T22.png)
+4 Finally, test the pipeline job! You should be able to see 1 row inserted to the **accounts** table in MySQL
+
+```
+mysql> create table accounts (balance int, firstname varchar(20), lastname varchar(20), age int, gender char(1), address varchar(30), employer varchar(20), email varchar(20), city varchar(6), state char(2), id smallint auto_increment primary key);
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> select * from accounts;
++---------+-----------+----------+------+--------+-----------------+----------+----------------------+--------+-------+----+
+| balance | firstname | lastname | age  | gender | address         | employer | email                | city   | state | id |
++---------+-----------+----------+------+--------+-----------------+----------+----------------------+--------+-------+----+
+|   39225 | Amber     | Duke     |   32 | M      | 880 Holmes Lane | Pyrami   | amberduke@pyrami.com | Brogan | IL    |  1 |
++---------+-----------+----------+------+--------+-----------------+----------+----------------------+--------+-------+----+
+1 row in set (0.00 sec)
+```
+Voila!
 
 
 
