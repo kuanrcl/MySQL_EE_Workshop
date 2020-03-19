@@ -19,7 +19,7 @@ vi /etc/samba/smb.conf
  Run "Windows Explorer", Map Network Drive, Specify the IP and the samba folder directive, for example, **192.168.56.41/root**
 
 ## NDB Commands
-mcm>
+### GET commands
 ```
 get mycluster1;
 
@@ -230,6 +230,9 @@ mcm> get -d wait_timeout:mysqld mycluster1;
 +--------------+-------+----------+---------+----------+---------+---------+---------+
 1 row in set (0.03 sec)
 
+```
+### List commands
+```
 list sites;
 mcm> list sites;
 +--------+------+-------+---------+
@@ -291,6 +294,14 @@ mcm> list processes mycluster1;
 +--------+----------+---------+
 7 rows in set (0.04 sec)
 
+mcm> list packages mysite;
++-------------+--------------------------------+---------+
+| Package     | Path                           | Hosts   |
++-------------+--------------------------------+---------+
+| cluster.pkg | /home/mysql/mcm/cluster-latest | primary |
++-------------+--------------------------------+---------+
+1 row in set (0.09 sec)
+
 
 list backups mycluster1;
 mcm> list backups mycluster1;
@@ -301,7 +312,9 @@ mcm> list backups mycluster1;
 | None     | 2      | primary |           |       | No backup directory |
 +----------+--------+---------+-----------+-------+---------------------+
 2 rows in set (0.01 sec)
-
+```
+### Show Status commands
+```
 show status -r mycluster1;
 mcm> show status -r mycluster1;
 +--------+----------+---------+---------+-----------+-------------+
@@ -391,7 +404,6 @@ mcm> show status --progress mycluster1;
 | start cluster | finished | 100%     |
 +---------------+----------+----------+
 1 row in set (0.04 sec)
-
 ```
 
 
