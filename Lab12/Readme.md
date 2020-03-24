@@ -3,7 +3,7 @@ Kafka is fast becoming one of the major components of cloud-native application a
 
 ![Kafka](img/C2.png)
 
-## Using Kafka Connect 
+## 1. Using Kafka Connect 
 
 ### Install Confluent Kafka
 The prerequisite of Kafka is the JVM. 
@@ -86,7 +86,6 @@ insert into foobar (c1,c2) values(1,'foo');
 \q
 ```
 
-### Configure MySQL Connection
 
 ### Configure MySQL conenction
 We will create a simple JDBC connection properties to test Kafka connection to MySQL
@@ -194,7 +193,7 @@ null    {"c1":{"int":3},"c2":{"string":"foo"},"create_ts":1501796670000,"update_
 null    {"c1":{"int":1},"c2":{"string":"bar"},"create_ts":1501796305000,"update_ts":1501796692000}
 ```
 
-## Using Debezium
+## 2. Using Debezium
 ### Install Debezium MySQL connector
 ```
 confluent-hub install debezium/debezium-connector-mysql:latest
@@ -231,6 +230,21 @@ Adding installation directory to plugin path in the following files:
 
 Completed
 ```
+
+### Restart Kafka 
+```
+confluent local stop connect && confluent local start connect
+```
+Check if the Debezium connector is running
+```
+curl -sS localhost:8083/connector-plugins | jq .[].class | grep mysql
+```
+If the JSON processor is not installed (jq), install jq
+```
+sudo yum install jq
+```
+
+###
 
 Awesome!
 
