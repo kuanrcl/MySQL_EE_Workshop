@@ -44,6 +44,19 @@ Log on to Hortonworks portal to check the imported data file
 Select "File view", navigate to "/home/maria_dev/movies", open the file "part-m-00000"
 ![portal](img/H4.png)
 
+### Miscellaneous
+If some of the hadoop services are not started, for example, the Name Node service (some errors saying safe mode)
+
+login to VM as root
+password: hadoop
+you will be prompted to change the password, change the password to **hortonworks1** same as mysql
+```
+su hdfs
+hdfs dfsadmin -safemode leave
+Safe mode is OFF
+```
+Restart the services in the following order: HDFS, YARN, MapReduce
+
 
 
 
