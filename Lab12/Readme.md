@@ -194,6 +194,8 @@ null    {"c1":{"int":1},"c2":{"string":"bar"},"create_ts":1501796305000,"update_
 ```
 
 ## 2. Using Debezium
+**Debezium does not seem to work with 8.0.19, the official release only tested with 8.0.13, will try it out on older version later**
+
 ### Install Debezium MySQL connector
 ```
 confluent-hub install debezium/debezium-connector-mysql:latest
@@ -270,7 +272,7 @@ Start consuming messages from the topics
 ```
 confluent local consume dbserver1.inventory.customers -- --from-beginning
 ```
-**Debezium does not seem to work with 8.0.19, the official release only tested with 8.0.13**
+
 
 Awesome!
 
