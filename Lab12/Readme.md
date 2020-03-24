@@ -1,9 +1,11 @@
 # Using Confluent Kafka with MySQL
-Kafka is fast becoming one of the major components of cloud-native application architecture. In this lab, we will use Confluent Kafka to ingest data from MySQL to Kafka
+Kafka is fast becoming one of the major components of cloud-native application architecture. In this lab, we will use Confluent Kafka to ingest data from MySQL to Kafka using Kafka Connect and Debezium 
 
 ![Kafka](img/C2.png)
 
-## Install Confluent Kafka
+## Using Kafka Connect 
+
+### Install Confluent Kafka
 The prerequisite of Kafka is the JVM. 
 Use the bundled JVM in MySQL, for example, export JAVA_HOME=/usr/local/mysql/enterprise/agent/java
 
@@ -69,7 +71,7 @@ connect is [UP]
 Starting ksql-server
 ksql-server is [UP]
 ```
-## Prepare MySQL database
+### Prepare MySQL database
 Create a simple table for testing
 mysql>
 ```
@@ -84,9 +86,9 @@ insert into foobar (c1,c2) values(1,'foo');
 \q
 ```
 
-## Configure MySQL Connection
+### Configure MySQL Connection
 
-## Configure MySQL conenction
+### Configure MySQL conenction
 We will create a simple JDBC connection properties to test Kafka connection to MySQL
 
 ### Edit "kafka-connect-jdbc-source.json"
@@ -191,6 +193,45 @@ null    {"c1":{"int":2},"c2":{"string":"foo"},"create_ts":1501796665000,"update_
 null    {"c1":{"int":3},"c2":{"string":"foo"},"create_ts":1501796670000,"update_ts":1501796670000}
 null    {"c1":{"int":1},"c2":{"string":"bar"},"create_ts":1501796305000,"update_ts":1501796692000}
 ```
+
+## Using Debezium
+### Install Debezium MySQL connector
+```
+confluent-hub install debezium/debezium-connector-mysql:latest
+The component can be installed in any of the following Confluent Platform installations:
+  1. /opt/confluent-5.4.0 (found in the current directory)
+  2. /usr/local/kafka (where this tool is installed)
+Choose one of these to continue the installation (1-2): 1
+Do you want to install this into /opt/confluent-5.4.0/share/confluent-hub-components? (yN) y
+
+
+Component's license:
+Apache 2.0
+https://github.com/debezium/debezium/blob/master/LICENSE.txt
+I agree to the software license agreement (yN) y
+
+You are about to install 'debezium-connector-mysql' from Debezium Community, as published on Confluent Hub.
+Do you want to continue? (yN) y
+
+Downloading component Debezium MySQL CDC Connector 1.0.0, provided by Debezium Community from Confluent Hub and installing into /opt/confluent-5.4.0/share/confluent-hub-components
+Detected Worker's configs:
+  1. Standard: /opt/confluent-5.4.0/etc/kafka/connect-distributed.properties
+  2. Standard: /opt/confluent-5.4.0/etc/kafka/connect-standalone.properties
+  3. Standard: /opt/confluent-5.4.0/etc/schema-registry/connect-avro-distributed.properties
+  4. Standard: /opt/confluent-5.4.0/etc/schema-registry/connect-avro-standalone.properties
+  5. Based on CONFLUENT_CURRENT: /tmp/confluent.IgZcKDJX/connect/connect.properties
+Do you want to update all detected configs? (yN) y
+
+Adding installation directory to plugin path in the following files:
+  /opt/confluent-5.4.0/etc/kafka/connect-distributed.properties
+  /opt/confluent-5.4.0/etc/kafka/connect-standalone.properties
+  /opt/confluent-5.4.0/etc/schema-registry/connect-avro-distributed.properties
+  /opt/confluent-5.4.0/etc/schema-registry/connect-avro-standalone.properties
+  /tmp/confluent.IgZcKDJX/connect/connect.properties
+
+Completed
+```
+
 Awesome!
 
 
