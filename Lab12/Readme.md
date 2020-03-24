@@ -244,7 +244,33 @@ If the JSON processor is not installed (jq), install jq
 sudo yum install jq
 ```
 
-###
+### Test connector to MySQL
+Create a MySQL json configuration
+```
+{
+ "name": "inventory-connector",
+ "config": {
+     "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+     "tasks.max": "1",
+     "database.hostname": "mysql",
+     "database.port": "3306",
+     "database.user": "debezium",
+     "database.password": "dbz",
+     "database.server.id": "184054",
+     "database.server.name": "dbserver1",
+     "database.whitelist": "inventory",
+     "database.history.kafka.bootstrap.servers": "localhost:9092",
+     "database.history.kafka.topic": "schema-changes.inventory"
+     }
+ }
+ curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ \
+ -d @register-mysql.json
+```
+Start consuming messages from the topics
+```
+confluent local consume dbserver1.inventory.customers -- --from-beginning
+```
+**Debezium does not seem to work with 8.0.19, the official release only tested with 8.0.13**
 
 Awesome!
 
