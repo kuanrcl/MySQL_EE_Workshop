@@ -15,12 +15,17 @@ Once the user/password is configured, you can start using Nagios to monitor MySQ
 ## Configure MySQL
 On Nagios UI, select **Configure**->**Configuration Wizard**
 Select the **MySQL Server** and fill up the details
+
 ![MySQL3](img/N4.png)
 
 ![MySQL4](img/N5.png)
 
 Once configured, you can start monitoring MySQL by navigating the different metrics
+
 ![MySQL](img/N3.png)
+
+To quickly locate the MySQL monitoring metrics, use the search bar and search for "MySQL". The monitoring stats are grouped in 
+**Services** view
 
 ![MySQL5](img/N6.png)
 
