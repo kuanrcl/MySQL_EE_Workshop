@@ -5,6 +5,7 @@ Enable samba on linux VM so that you can copy and paste files from your host Win
 ```
 sudo yum install samba
 vi /etc/samba/smb.conf
+```
 [global]
         workgroup = WORKGROUP
         netbios name = SA
@@ -17,6 +18,7 @@ vi /etc/samba/smb.conf
         directory mask = 0755
         force user = root
         force group = root
+ ```
  sudo systemctl restart smb
  ```
  ### Map Linux folder on Windows Explorer
