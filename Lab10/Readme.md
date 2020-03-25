@@ -143,7 +143,25 @@ select * from items;
 | {"_id": "00005e5420230000000000000009", "name": "Orange", "price": "1"}   |
 +---------------------------------------------------------------------------+
 ```
+## Miscellaneous 
+Setting up essential Node.js modules in Visual Studio **Terminal** panel
+![terminal](img/M5.png)
 
+```
+npm init
+npm install –save express
+npm install –save express-handlebars
+npm install –save express-validation
+npm install –save joi
+npm install –save body-parser
+npm install nodemon –g
+```
+
+When executing nodemon, hit error on Execution Policy, do this:
+```
+Powershell Get-ExecutionPolicy -List
+Powershell Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+```
 
 
 
