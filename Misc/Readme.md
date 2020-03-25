@@ -1,4 +1,11 @@
 # Miscellaneous Handy Tips
+
+## Virtualbox regenerate HD UUID
+```
+VBoxManage.exe internalcommands sethduuid 202002-MySQLWorkshop8019-disk002.vdi
+```
+
+
 ## Using Samba to exchange files on Windows
 Enable samba on linux VM so that you can copy and paste files from your host Windows OS to Linux VM easily
 ### Install Samba on Linux VM
