@@ -15,12 +15,14 @@ Once the user/password is configured, you can start using Nagios to monitor MySQ
 ## Configure MySQL
 On Nagios UI, select **Configure**->**Configuration Wizard**
 Select the **MySQL Server** and fill up the details
-![MySQL3](img/N5.png)
+![MySQL3](img/N4.png)
 
-![MySQL4](img/N6.png)
+![MySQL4](img/N5.png)
 
 Once configured, you can start monitoring MySQL by navigating the different metrics
 ![MySQL](img/N3.png)
+
+![MySQL5](img/N6.png)
 
 ### Comparing with MySQL Enterprise Monitor
 MEM provides both **InnoDB and NDB Cluster views** as well as **Replication** status that most people wants to monitor. 
