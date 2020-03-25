@@ -5,6 +5,10 @@ Enable samba on linux VM so that you can copy and paste files from your host Win
 ```
 sudo yum install samba
 vi /etc/samba/smb.conf
+[global]
+        workgroup = WORKGROUP
+        netbios name = SA
+        map to guest = Bad User
 [root]
         path = /
         read only = no
