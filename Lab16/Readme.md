@@ -19,6 +19,13 @@ Select the **MySQL Server** and fill up the details
 Once configured, you can start monitoring MySQL by navigating the different metrics
 ![MySQL](img/N3.png)
 
+![MySQL2](img/N4.png)
+
+![MySQL3](img/N5.png)
+
+![MySQL4](img/N6.png)
+
+
 In comparison with MySQL Enterprise Monitor (MEM), MEM provides both InnoDB and NDB Cluster views as well as Replication status that 
 most people wants to monitor
 
