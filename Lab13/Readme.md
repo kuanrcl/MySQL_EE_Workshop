@@ -1,6 +1,6 @@
 # Using Hortonworks Data Platform (HDP) with MySQL
 Big Data using Hadoop technology has become the mainstream data analytics platform for ingesting massive amount of data from 
-various sources, one of the major data sources is the transactional data such as MySQL. I
+various sources, one of the major data sources is the transactional data such as MySQL. 
 
 ## Install Hortonworks Data Platform (HDP) Sandbox
 Download and import HortonWorks Sandbox (for Virtualbox) from https://www.cloudera.com/downloads/hortonworks-sandbox.html
@@ -35,14 +35,24 @@ grant all privileges on *.* to ''@'localhost';
 ```
 
 ## Import data from MySQL to Hadoop
-Use sqoop to import from MySQL into Hadoop file system, sqoop is using MapReduce to sort the data and generate data file in HDFS
+Use sqoop to import from MySQL into Hadoop file system and import it to Hive. Sqoop is using MapReduce to sort the data and generate data file in HDFS
 ```
-sqoop import --connect jdbc:mysql://localhost/movielens --driver com.mysql.jdbc.Driver --table movies --table movies -m 1
+sqoop import --connect jdbc:mysql://localhost/movielens --driver com.mysql.jdbc.Driver --table movies --table movies -m 1 --hive-import
 ```
-### Check the imported data file
+### Check the data file uploaded to HDFS
 Log on to Hortonworks portal to check the imported data file
 Select "File view", navigate to "/home/maria_dev/movies", open the file "part-m-00000"
 ![portal](img/H4.png)
+
+### Explore the imported Hive table
+Log on to HDP dashboard using user/password (maria_dev/maria_dev)
+Select the "Hive View 2.0" on the top right corner of the dashboard
+
+![hive](img/H5.png)
+
+Viola!
+
+### 
 
 ### Miscellaneous
 If some of the hadoop services are not started, for example, the Name Node service (some errors saying safe mode)
