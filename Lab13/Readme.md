@@ -90,6 +90,49 @@ sharded data. Cassadra organizes nodes in cluster
 
 ![cass](img/cass1.png)
 
+### Install Cassadra
+```
+yum install sci-utils
+yum install centos-release-scl-rh
+yum install python27
+scl enable python27 bash
+python -V
+cd /etc/yum.repos.d/
+vi datastax.repo
+[Datastax]
+name = Datastax for Cassadra
+baseurl = http://rpm.datastax.com/community
+enabled = 1
+gpgcheck = 0
+yum install dsc30
+pip install cqlsh
+service cassadra start
+cqlsh --cqlversion="3.4.0"
+```
+cqlsh>
+```
+create keyspace movielens with replication = {'class"' 'SimpleStrategy', 'replication_factor':'1'} and durable_writes=true;
+use movieles;
+create table users (user_id int, age int, gender text, occupation text, zip text, primary key (user_id));
+describe table users;
+select * from users;
+wget http://media.sundog-soft.com/hadoop/CassadraSpark.py
+export SPARK_MAJOR_VERSION=2
+spark-submit --packages datastax:spark-cassadra-connector:2.0.0-M2-s_2.11 CassadraSpark.py
+```
+csqlsh>
+```
+use movielens;
+select * from users limit 10;
+service cassadra stop
+```
+
+
+# Drill
+Import data into HBase
+![hbase](img/D1.png)
+
+
 
 ### Miscellaneous
 If some of the hadoop services are not started, for example, the Name Node service (some errors saying safe mode)
