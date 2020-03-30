@@ -150,6 +150,22 @@ Configure Hive configuration
 Phoenix architecture
 ![Phoenix](img/P1.png)
 
+```
+yum install phoenix
+cd /usr/hdp/current/phoenix-client/bin
+python sqlline.py
+```
+0: jdbc:phoenix>
+```
+!tables
+create table if not exist us_population (state char(2) not null, city varchar not null, population bigint \
+constraint my_pk primary key (state, city));
+!tables
+upsert into us_population values ("NY", "New York", 890998888);
+upsert into us_population values ("CA", "Los Angles", 1890998888);
+select * from us_population;
+```
+
 
 
 
