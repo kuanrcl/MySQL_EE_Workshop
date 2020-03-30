@@ -5,6 +5,9 @@ various sources, one of the major data sources is the transactional data such as
 ## Hadoop Architecture
 ![Arch](img/H6.png)
 
+Zookeeper Architecture
+![Zoo](img/H7.png)
+
 
 ## Install Hortonworks Data Platform (HDP) Sandbox
 Download and import HortonWorks Sandbox (for Virtualbox) from https://www.cloudera.com/downloads/hortonworks-sandbox.html
