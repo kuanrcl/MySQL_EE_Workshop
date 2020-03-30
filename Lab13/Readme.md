@@ -60,7 +60,7 @@ Login to HDP VM and start the REST server
 /usr/hdp/current/hbase-master/bin/hbase-daemon.sh start rest -p 8000 --infoport 8001
 ```
 ## Using Pig with HBase
-HBase architecture
+HBase architecture consists of HBase Master to manage the HBase data stored in HDFS
 ![hbase](img/hbase1.png)
 
 Upload u.user to HDFS
