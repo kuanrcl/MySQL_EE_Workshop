@@ -84,7 +84,7 @@ disable 'users'
 drop 'users'
 ```
 
-### Cassadra
+## Cassadra
 Cassadra is a NoSQL database with CQL language to query the data. Cassadra shard data into multiple nodes that manage a subset of the
 sharded data. Cassadra organizes nodes in cluster
 
@@ -126,11 +126,27 @@ use movielens;
 select * from users limit 10;
 service cassadra stop
 ```
+## Mongodb
+```
+export SPARK_MAJOR_VERSION=2
+wget http://media.sundog-soft.com/hadoop/MongoSpark.py
+spark-submit --packages org.mongodb-spark-connector_2.11:2.0.0 MongoSpark.py
+
+## Drill
+Import data into Hive
+![hive](img/D1.png)
+Import data into mongodb
+
+Download and install Apache Drill
+```
+bin/drillbit.sh start -Ddrill.exec.http.port=8765
+```
+Point your browser to http://localhost:8765/
+Configure Hive configuration
+![Hive](img/D2.png)
 
 
-# Drill
-Import data into HBase
-![hbase](img/D1.png)
+
 
 
 
