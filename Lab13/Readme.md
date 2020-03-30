@@ -3,7 +3,7 @@ Big Data using Hadoop technology has become the mainstream data analytics platfo
 various sources, one of the major data sources is the transactional data such as MySQL. 
 
 ## Hadoop Architecture
-![Arch](img/H5.png)
+![Arch](img/H6.png)
 
 
 ## Install Hortonworks Data Platform (HDP) Sandbox
