@@ -59,8 +59,34 @@ Login to HDP VM and start the REST server
 ```
 /usr/hdp/current/hbase-master/bin/hbase-daemon.sh start rest -p 8000 --infoport 8001
 ```
+## Using Pig with HBase
+HBase architecture
+![hbase](img/hbase1.png)
 
-### 
+Upload u.user to HDFS
+```
+hbase shell
+create 'users', 'userinfo'
+list
+
+```
+Download the hbase.pig script
+```
+wget https://media.sundog-soft.com/hadoop/hbase.pig
+pig hbase.pig
+```
+Pig is using MapReduce to upload data
+Check the data after the data is loaded into hbase
+```
+hbase shell
+scan 'users'
+disable 'users'
+drop 'users'
+```
+
+### Cassadra
+Cassadra is a NoSQL database with CQL language to query the data
+
 
 ### Miscellaneous
 If some of the hadoop services are not started, for example, the Name Node service (some errors saying safe mode)
