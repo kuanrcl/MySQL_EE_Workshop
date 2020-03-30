@@ -146,7 +146,9 @@ Point your browser to http://localhost:8765/
 Configure Hive configuration
 ![Hive](img/D2.png)
 
-
+## Using Phoenix with HBase
+Phoenix architecture
+![Phoenix](img/P1.png)
 
 
 
