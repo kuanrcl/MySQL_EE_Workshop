@@ -134,6 +134,7 @@ spark-submit --packages org.mongodb-spark-connector_2.11:2.0.0 MongoSpark.py
 
 ## Drill
 Import data into Hive
+```
 ![hive](img/D1.png)
 Import data into mongodb
 
