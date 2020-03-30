@@ -14,8 +14,8 @@ MySQL Enterprise Edition Hands-on Workshop
 
 ### MySQL Integration
 |  | |
-| ------------- | ------------------------------------------------------- |
-| [Lab9](Lab9) | InnoDB cluster in Kubernetes (minikube)
+| -------------  | ------------------------------------------------------- |
+| [Lab9](Lab9)   | InnoDB cluster in Kubernetes (minikube)
 | [Lab10](Lab10) | Node.js with XDev API using VS Code   
 | [Lab11](Lab11) | Microservices using Spring Boot with MySQL
 | [Lab12](Lab12) | Using Kafka with MySQL
@@ -24,4 +24,5 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab15](Lab15) | Using Splunk with MySQL
 | [Lab16](Lab16) | Using Nagios with MySQL
 | [Lab17](Lab17) | Using Elastic Search with MySQL
+| [Lab18](Lab18) | Innodb Cluster in Openshift (minishift)
 
