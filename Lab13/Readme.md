@@ -2,6 +2,10 @@
 Big Data using Hadoop technology has become the mainstream data analytics platform for ingesting massive amount of data from 
 various sources, one of the major data sources is the transactional data such as MySQL. 
 
+## Hadoop Architecture
+![Arch](img/H5.png)
+
+
 ## Install Hortonworks Data Platform (HDP) Sandbox
 Download and import HortonWorks Sandbox (for Virtualbox) from https://www.cloudera.com/downloads/hortonworks-sandbox.html
 Once you downloaded, import the file into Virtualbox and launch the VM once imported into Virtualbox
