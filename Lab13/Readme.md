@@ -86,7 +86,8 @@ drop 'users'
 
 ### Cassadra
 Cassadra is a NoSQL database with CQL language to query the data. Cassadra shard data into multiple nodes that manage a subset of the
-sharded data
+sharded data. Cassadra organizes nodes in cluster
+
 ![cass](img/cass1.png)
 
 
