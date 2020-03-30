@@ -52,6 +52,14 @@ Select the "Hive View 2.0" on the top right corner of the dashboard
 
 Viola!
 
+## Using Python to work with HBase
+
+Start HBase services using HDP Dashboard
+Login to HDP VM and start the REST server
+```
+/usr/hdp/current/hbase-master/bin/hbase-daemon.sh start rest -p 8000 --infoport 8001
+```
+
 ### 
 
 ### Miscellaneous
