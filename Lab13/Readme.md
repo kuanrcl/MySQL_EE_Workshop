@@ -5,8 +5,49 @@ various sources, one of the major data sources is the transactional data such as
 ## Hadoop Architecture
 ![Arch](img/H6.png)
 
+![Arch2](img/H8.png)
+
 Zookeeper Architecture
 ![Zoo](img/H7.png)
+
+Play around with Zookeeper
+```
+cd /usr/hdp/current/zookeeper-client/bin
+zkCli.sh
+```
+[zk: localhost:2181]
+```
+ls /
+create -e /testmaster "127.0.0.1:2223" ## -e means ephemeral
+get /testmaster
+quit
+zkCli.sh
+ls /
+get /testmaster
+create -e /testmaster "127.0.0.1:2225"
+```
+
+### Kafka
+```
+cd /usr/hdp/current/kafka-broker/bin
+kafka-topics.sh --create --zookeeper sandbox.hortonworks.com:2181 --replication-factor 1 --partition 1 --topic ryan
+kafka-topics.sh --list -zookeeper sandbox.hortonworks.com:2181
+kafka-console-producer.sh --broker-list sandbox.hortonworks.com:6667 --topic ryan
+This is a message
+This is anoterh message
+```
+On another terminal
+```
+cd /usr/hdp/current/kafka-broker
+kafka-console-consumer.sh --bootstrap-server sandbox.hortonworks.com:6667 --topic ryan --from-beginning
+This is a message
+This is anoterh message
+```
+
+
+
+
+
 
 
 ## Install Hortonworks Data Platform (HDP) Sandbox
