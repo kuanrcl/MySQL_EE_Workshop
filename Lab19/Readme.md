@@ -27,7 +27,14 @@ pip install oci_cli-2.9.8-py2.py3-none-any.whl
 First, generate public/private key using puttygen
 1. Select **SSH-2 RSA** as default key type, **2048** bits, hit **Generate** key
 2. Save the Private Key in **ppk** format (proprietary putty format)
-3. Copy all the text file in the list box (Public Key) and paste the text into a text file, and save the Public Key with extension **.pub**
+3. Save the Public Key in **pub** format (the public key format is NOT the **rsa public key** needed)
+and convert the ssh public key format to rsa public key
+```
+ssh-keygen -f xxx.pub -e -i pem
+-----BEGIN RSA PUBLIC KEY-----
+9999999999999999999999999dsafsdfasfwerwe99==
+-----END RSA PUBLIC KEY-----
+```
 
 Next, upload the **Public Key** to OCI as part of your user profile settings
 
