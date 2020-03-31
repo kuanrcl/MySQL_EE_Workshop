@@ -1,7 +1,7 @@
 # MySQL_EE_Workshop
 MySQL Enterprise Edition Hands-on Workshop
 ## Lab Structure
-
+|||
 | ------------- | ------------------------------------------------------- |
 | [Prep](Prep) | VM Installation
 | [Lab1](Lab1) | MySQL Installation
@@ -27,7 +27,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab18](Lab18) | Innodb Cluster in Openshift (minishift)
 
 ### Oracle Cloud Infrastructure
-
+|||
 | -------------  | ------------------------------------------------------- |
 | [Lab19](Lab19) | Setting up OCI CLI
 | [Lab20](Lab20) | 
