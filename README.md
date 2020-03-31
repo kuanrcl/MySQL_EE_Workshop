@@ -13,7 +13,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab8](Lab8) | MySQL Replication
 
 ### MySQL Integration
-
+|||
 | -------------  | ------------------------------------------------------- |
 | [Lab9](Lab9)   | InnoDB cluster in Kubernetes (minikube)
 | [Lab10](Lab10) | Node.js with XDev API using VS Code   
@@ -27,6 +27,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab18](Lab18) | Innodb Cluster in Openshift (minishift)
 
 ### Oracle Cloud Infrastructure
+
 | -------------  | ------------------------------------------------------- |
 | [Lab19](Lab19) | Setting up OCI CLI
 | [Lab20](Lab20) | 
