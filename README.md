@@ -1,7 +1,7 @@
 # MySQL_EE_Workshop
 MySQL Enterprise Edition Hands-on Workshop
 ## Lab Structure
-|  | |
+
 | ------------- | ------------------------------------------------------- |
 | [Prep](Prep) | VM Installation
 | [Lab1](Lab1) | MySQL Installation
@@ -13,7 +13,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab8](Lab8) | MySQL Replication
 
 ### MySQL Integration
-|  | |
+
 | -------------  | ------------------------------------------------------- |
 | [Lab9](Lab9)   | InnoDB cluster in Kubernetes (minikube)
 | [Lab10](Lab10) | Node.js with XDev API using VS Code   
@@ -25,4 +25,11 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab16](Lab16) | Using Nagios with MySQL
 | [Lab17](Lab17) | Using Elastic Search with MySQL
 | [Lab18](Lab18) | Innodb Cluster in Openshift (minishift)
+
+### Oracle Cloud Infrastructure
+| -------------  | ------------------------------------------------------- |
+| [Lab19](Lab19) | Setting up OCI CLI
+| [Lab20](Lab20) | 
+| [Lab21](Lab21) | 
+| [Lab22](Lab22) | 
 
