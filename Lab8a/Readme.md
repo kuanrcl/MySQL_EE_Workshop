@@ -141,7 +141,7 @@ On Server C
 mysqlbackup --defaults-file=config/my3.cnf --backup-dir=/home/mysql/backup/full/ryan/2020 backup-and-apply-log/2020-04-09_18-09-33 copy-back
 ```
 ### Create replication channel between A and C
-We will use **replication filter** to include and exclude which databases to be replicated. Use **replicate_do_db** to include database to be replicated and **replicate_ignore_db** to exclude databases from replicating
+We will use **replication filter** to include and exclude which databases to be replicated. Use **replicate_do_db** to include database to be replicated and **replicate_ignore_db** to exclude databases from replicating. MySQL will replicate all databases if we don't specify replication filter
 ```
 mysql -uroot -h127.0.0.1 -P3366 -p << EOL1
 
@@ -179,5 +179,11 @@ start slave for channel 'channel2';
 show slave status for channel 'channel2'\G
 EOL1
 ```
+### Make the DR slave read_only
+It is a good practice to make the DR slave as **super_read_only** so that we can avoid the DR slave to any data changes from other sources than from the production master server
+```
+set @@global.super_read_only
+```
+
 Voila!
 
