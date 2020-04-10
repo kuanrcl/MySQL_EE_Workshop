@@ -1,5 +1,5 @@
 # High Availability with Local- and Cross-site replication
-We will configure local replication and cross-site replication to mimic real-life deployment of async replication in production data center and cross-site replication from production data center to disaster recovery data center. In this scenario, Prod DC will have A->B and DRC will have C->D, and A->C
+We will configure local replication and cross-site replication to mimic real-life deployment of async replication in production data center and cross-site replication from production data center to disaster recovery data center. In this scenario, Prod DC will have A->B and DRC will have C->D, also cross-site replication with A->C
 ## Local Replication at production site (MySQL Server A and B)
 To simulate multiple MySQL servers in a single VM, we will need to specify different **server_id**, **datadir** and **port**
 ```
@@ -124,3 +124,60 @@ enforce-gtid-consistency
 master_info_repository=TABLE
 relay_log_info_repository=TABLE
 ```
+Next we will create the "repl" user on both servers (A and B):q:q
+```
+create user repl@'localhost' identified with mysql_native_password by 'repl';
+grant replication slave on *.* to repl@'localhost';
+```
+### Backup and restore A to C
+We will use mysqlbackup to backup from A and restore to C, and then configure replication between A and C
+
+On Server A
+```
+mysqlbackup --defaults-file=config/my1.cnf --user=root --password --host=127.0.0.1 --port=3346 --with-timestamp --backup-dir=/home/mysql/backup/full/ryan backup-and-apply-log
+```
+On Server C
+```
+mysqlbackup --defaults-file=config/my3.cnf --backup-dir=/home/mysql/backup/full/ryan/2020 backup-and-apply-log/2020-04-09_18-09-33 copy-back
+```
+### Create replication channel between A and C
+We will use **replication filter** to include and exclude which databases to be replicated. Use **replicate_do_db** to include database to be replicated and **replicate_ignore_db** to exclude databases from replicating
+```
+mysql -uroot -h127.0.0.1 -P3366 -p << EOL1
+
+change master to
+master_host='127.0.0.1',
+master_user='repl',
+master_password='repl',
+master_port=3346,
+master_auto_position=1,
+master_retry_count=5
+for channel 'channel3';
+
+change replication filter replicate_do_db=(odi), replicate_ignore_db=(ryan);
+
+start slave for channel 'channel3';
+
+show slave status for channel 'channel3'\G
+EOL1
+```
+Next we will create the replication channel between C and D
+```
+mysql -uroot -h127.0.0.1 -P3376 -p << EOL1
+
+change master to
+master_host='127.0.0.1',
+master_user='repl',
+master_password='repl',
+master_port=3366,
+master_auto_position=1,
+master_retry_count=5
+for channel 'channel2';
+
+start slave for channel 'channel2';
+
+show slave status for channel 'channel2'\G
+EOL1
+```
+Voila!
+
