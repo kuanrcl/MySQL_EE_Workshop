@@ -31,7 +31,7 @@ server-id=42
 datadir=/home/mysql/data/41b
 basedir=/usr/local/mysql5
 
-port=3346
+port=3356
 socket=/home/mysql/data/41b/mysqld.sock
 
 log-error=/home/mysql/data/41b/mysqld.error
@@ -44,7 +44,7 @@ enforce-gtid-consistency
 master_info_repository=TABLE
 relay_log_info_repository=TABLE
 ```
-Next we will create the "repl" user on both servers (A and B):q:q
+Next we will create the "repl" user on both servers (A and B)
 ```
 create user repl@'localhost' identified with mysql_native_password by 'repl';
 grant replication slave on *.* to repl@'localhost';
@@ -52,7 +52,7 @@ grant replication slave on *.* to repl@'localhost';
 ### Configure replication channel
 Since we are setting up 2 fresh servers, we will configure the replication the following way:
 ```
-mysql -uroot -h127.0.0.1 -P3366 -p << EOL3346
+mysql -uroot -h127.0.0.1 -P3346 -p << EOL3346
 reset master;
 reset slave;
 EOL3346
@@ -71,7 +71,7 @@ master_password='repl',
 master_port=3346,
 master_auto_position=1,
 master_retry_count=5
-for channel 'channel2';
+for channel 'channel1';
 
 start slave for channel 'channel1';
 
@@ -100,21 +100,21 @@ gtid-mode=on
 enforce-gtid-consistency
 master_info_repository=TABLE
 relay_log_info_repository=TABLE
-log-slave-update
+log-slave-updates
 ```
-Please note that there is an additional setting in my.cnf, **log-slave-update**. This parameter is important because as C will replicate from A, and propagate the transactions to D. This **log-slave-update** will write the transactions received from A to its own binary log and in turns, the downstream slav (D) will be able to replicate the C in the following topology (A->C->D)
+Please note that there is an additional setting in my.cnf, **log-slave-updates**. This parameter is important because as C will replicate from A, and propagate the transactions to D. This **log-slave-updates** will write the transactions received from A to its own binary log and in turns, the downstream slav (D) will be able to replicate the C in the following topology (A->C->D)
 ```
 my4.cnf
 [mysqld]
 explicit_defaults_for_timestamp
-server-id=41
-datadir=/home/mysql/data/41a
+server-id=44
+datadir=/home/mysql/data/41d
 basedir=/usr/local/mysql5
 
 port=3346
-socket=/home/mysql/data/41a/mysqld.sock
+socket=/home/mysql/data/41d/mysqld.sock
 
-log-error=/home/mysql/data/41a/mysqld.error
+log-error=/home/mysql/data/41d/mysqld.error
 sql-mode=NO_ENGINE_SUBSTITUTION,ONLY_FULL_GROUP_BY
 log-bin=mysqllog.bin
 relay-log=relay.bin
@@ -124,7 +124,7 @@ enforce-gtid-consistency
 master_info_repository=TABLE
 relay_log_info_repository=TABLE
 ```
-Next we will create the "repl" user on both servers (A and B):q:q
+Next we will create the "repl" user on both servers (C and D)
 ```
 create user repl@'localhost' identified with mysql_native_password by 'repl';
 grant replication slave on *.* to repl@'localhost';
