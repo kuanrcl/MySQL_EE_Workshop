@@ -11,6 +11,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab6](Lab6) | MySQL Security (Transparent Data Encryption, Firewall and Audit)
 | [Lab7](Lab7) | MySQL InnoDB Cluster
 | [Lab8](Lab8) | MySQL Replication
+| [Lab8a](Lab8a) | MySQL Cross-Site replication
 
 ### MySQL Integration
 |||
