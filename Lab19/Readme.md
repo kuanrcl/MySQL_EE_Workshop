@@ -42,7 +42,28 @@ You are now ready to config OCI configuration (you need to have your user-id, te
 (my-venv)
 ```
 C:\Users\rkuan\my-venv\Scripts>oci setup config
+```
+The OCI config file is in C:\Users\rkuan\.oci\config
+```
+[TEMP]
+user=ocid
+fingerprint=public key
+key_file=private key
+tenancy=ocid
+region=us-ashburn-1
+[DEFAULT]
+[SECTION]
+```
+Use OCI CLI to test the config
+```
 oci os ns get
+{
+  "data": "kdkdkd"
+}
+oci os ns get --profile TEMP
+{
+  "data": "kdkd"
+}
 ```
 
 You should be able to connect to OCI once you have configured the right settings
