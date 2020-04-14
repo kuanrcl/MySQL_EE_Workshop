@@ -27,6 +27,12 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab17](Lab17) | Using Elastic Search with MySQL
 | [Lab18](Lab18) | Innodb Cluster in Openshift (minishift)
 
+### MySQL Operations
+|||
+| -------------  | ------------------------------------------------------- |
+| [Lab4a](Lab4a) | MySQL Backup/Restore to different directory
+
+
 ### Oracle Cloud Infrastructure
 |||
 | -------------  | ------------------------------------------------------- |
