@@ -68,4 +68,10 @@ oci os ns get --profile TEMP
 
 You should be able to connect to OCI once you have configured the right settings
 
+## Connecting to OCI Compute via Serial Connection
+Serial Console is one way of connecting to OCI VM in situation where you can't connect to the VM using ssh
+The ssh command: ssh -o ProxyCommand=ssh -W %h:%p -p 443 Username Console_Connection_server Instance_OCID
+```
+ssh -o ProxyCommand='ssh -W %h:%p -p 443 ocid1.instanceconsoleconnection.oc1.phx.jjasfjasjfsajf user@instance-console.us-phoenix-1.oraclecloud.com ocid1.instance.oc1.phx.ajlkjsjfsjsaflk
+```
 
