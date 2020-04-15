@@ -74,4 +74,13 @@ The ssh command: ssh -o ProxyCommand=ssh -W %h:%p -p 443 Username Console_Connec
 ```
 ssh -o ProxyCommand='ssh -W %h:%p -p 443 ocid1.instanceconsoleconnection.oc1.phx.jjasfjasjfsajf user@instance-console.us-phoenix-1.oraclecloud.com ocid1.instance.oc1.phx.ajlkjsjfsjsaflk
 ```
+Once you get access to the VM via Serial Console but without the password of **opc** user, you can do the following:
+reboot the VM
+choose the boot image on the boot menu, and **edit** the boot sequence
+add the following parameter at the end of the **linuxefi** command
+```
+linuxefi /boot/vmlinuz-4.14.35-kkkk .... init=/bin/bash
+```
+Press control-X to restart, you should be able to bypass the **login** prompt and get access to the kernel
+you can then gain access to your system, for example, ~/.ssh/authorized_keys for ssh key, check /var/log/
 
