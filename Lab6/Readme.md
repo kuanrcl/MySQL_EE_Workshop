@@ -173,6 +173,40 @@ tail -100 ~/data/lab23/audit.log
 /opt/download/lab/23-Security/secure-audit-filter/39-cleanupAuditFilters.sh
 ```
 
+### MySQL Enterprise Audit (Manual Install)
+
+```
+mysql -u root -p < audit_log_filter_linux_install.sql
+
+[mysqld]
+audit-log=FORCE_PLUS_PERMANENT
+
+```
+
+#### Log all user activities
+
+```
+SELECT audit_log_filter_set_filter('log_all', '{ "filter": { "log": true } }');
+SELECT audit_log_filter_set_user('%', 'log_all');
+```
+
+#### Uninstall
+
+```
+DROP TABLE IF EXISTS mysql.audit_log_user;
+DROP TABLE IF EXISTS mysql.audit_log_filter;
+UNINSTALL PLUGIN audit_log;
+DROP FUNCTION audit_log_filter_set_filter;
+DROP FUNCTION audit_log_filter_remove_filter;
+DROP FUNCTION audit_log_filter_set_user;
+DROP FUNCTION audit_log_filter_remove_user;
+DROP FUNCTION audit_log_filter_flush;
+DROP FUNCTION audit_log_encryption_password_get;
+DROP FUNCTION audit_log_encryption_password_set;
+DROP FUNCTION audit_log_read;
+DROP FUNCTION audit_log_read_bookmark;
+```
+
 
 
 
