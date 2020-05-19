@@ -26,6 +26,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab16](Lab16) | Using Nagios with MySQL
 | [Lab17](Lab17) | Using Elastic Search with MySQL
 | [Lab18](Lab18) | Innodb Cluster in Openshift (minishift)
+| [Lab20](Lab20) | MySQL Document Store
 
 ### MySQL Operations
 |||
