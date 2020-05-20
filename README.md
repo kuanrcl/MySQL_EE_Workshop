@@ -27,6 +27,8 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab17](Lab17) | Using Elastic Search with MySQL
 | [Lab18](Lab18) | Innodb Cluster in Openshift (minishift)
 | [Lab18a](Lab18a)| MySQL Document Store
+| [Lab18b](Lab18b)| Using Yii Framework with MySQL
+
 
 ### MySQL Operations
 |||
