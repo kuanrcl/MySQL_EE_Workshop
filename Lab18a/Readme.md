@@ -63,6 +63,24 @@ Total successfully imported documents 25359 (1.74K documents/s)
 Check the imported documents:
 ```
 mysqlsh
+\js
+\c root:mysql@localhost:33060
+\u docstore
+var r=db.getCollection('restaurants')
+r.find().limit(2)
+```
 
-![Install](img/INS1.png)
+## More examples
+```
+r.find.fields("name", "cuisine").limit(2)
+r.find("cuision='Bakery'").fields("name", "cuisine").limit(2)
+r.find("cuisine in ('Turkish', 'Italian')").fields("name", "cuisine").limit(10)
+r.find("cuisine='Italian' and borough!='Manhattan'").fields("name", "cuisine", "borough").limit(2)
+
+\sql
+with cte1 as (select doc->>"$.name" as name, doc->>"$.cuisine" as cuisine, (select avg(score) from json_table(doc, "$.grades[*]" columns (score int path "$.score")) as r) as avg_score from restaurants) select *, rank() over (partition by cuisine order by avg_score desc) as 'rank' from cte1 order by 'rank', avg_score desc limit 10;
+
+
+
+
 
