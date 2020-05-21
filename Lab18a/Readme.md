@@ -26,8 +26,12 @@ mongoimport --db test --collection restaurants --drop --file ./primer-dataset.js
 ```
 mongoexport --collection=restaurants --db=test > from_mongo.json
 ```
+
+
+
 Results:
 ```
+
 2020-05-06T13:46:22.759+0800    connected to: mongodb://localhost/
 2020-05-06T13:46:23.763+0800    [........................]  test.restaurants
 2020-05-06T13:46:24.761+0800    [........................]  test.restaurants
@@ -84,6 +88,28 @@ with cte1 as (select doc->>"$.name" as name, doc->>"$.cuisine" as cuisine, (sele
 db.getCollection('homeland').find().fields("_embedded.episodes[*].season","_embedded.episodes[*].name").sort('_embedded.episodes[*].season').limit(1)
 ```
 
+## Using mysqlxdev API
+1. install the protobuf
+```
+git clone https://github.com/google/protobuf
+./autogen.sh
+./configure
+make
+make install
+```
+2. install the boost libraries
+```
+wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz
+./bootstrap.sh --with-libraries=all --with-toolset=gcc
+./b2 
+./b2 install --prefix=/usr
+ldconfig
+```
+3. install mysqlxdevapi
+```
+sudo pecl install mysql_xdevapi
+echo "extension=mysql_xdevapi.so" > /etc/php.d/40-mysql_xdevapi.ini
+```
 
 
 
