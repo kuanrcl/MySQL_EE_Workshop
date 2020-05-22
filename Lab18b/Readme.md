@@ -23,12 +23,14 @@ sudo yum-config-manager --enable remi-php72
 sudo yum update
 sudo yum install php
 ```
-
+PHP 7.2 on Ubuntu 7.8
+```
+apt install php7.2-cli php7.2-dev php7.2-mysql php7.2-pdo php7.2-xml php-curl php7.2-mbstring
+```
 Install Yii Framework
 ```
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
-composer install --ignore-platform-reqs
 composer create-project --prefer-dist yiisoft/yii2-app-basic basic
 cd basic
 vi config/web.php
