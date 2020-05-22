@@ -88,27 +88,29 @@ with cte1 as (select doc->>"$.name" as name, doc->>"$.cuisine" as cuisine, (sele
 db.getCollection('homeland').find().fields("_embedded.episodes[*].season","_embedded.episodes[*].name").sort('_embedded.episodes[*].season').limit(1)
 ```
 
-## Using mysqlxdev API
-1. install the protobuf
+## Using mysqlxdev API (Ubuntu 7.8)
+1. install development tools
 ```
-git clone https://github.com/google/protobuf
-./autogen.sh
-./configure
-make
-make install
+apt install build-essential libprotobuf-dev libboost-dev openssl protobuf-compiler liblz4-tool zstd
+apt install php7.2-cli php7.2-dev php7.2-mysql php7.2-pdo php7.2-xml
 ```
-2. install the boost libraries
+2. install mysql-server
 ```
-wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz
-./bootstrap.sh --with-libraries=all --with-toolset=gcc
-./b2 
-./b2 install --prefix=/usr
-ldconfig
+wget -c https://repo.mysql.com//mysql-apt-config_0.8.13-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb 
+sudo apt update
+sudo apt-get install mysql-server
 ```
-3. install mysqlxdevapi
+3. install mysqlxdevapi (requires boost and protobuf libraries)
 ```
 sudo pecl install mysql_xdevapi
-echo "extension=mysql_xdevapi.so" > /etc/php.d/40-mysql_xdevapi.ini
+echo "extension=mysql_xdevapi.so" > /etc/php/7.2/mods-available/mysql_xdevapi.ini
+phpenmod -v 7.2 -s ALL mysql_xdevapi
+php -m |grep mysql
+mysql_xdevapi
+mysqli
+mysqlnd
+pdo_mysql
 ```
 
 
