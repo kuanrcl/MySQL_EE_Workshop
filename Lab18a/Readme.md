@@ -99,12 +99,46 @@ sed 's/}}},{"id"/}}}{"id"/g' homeland.json.0 > homeland.json.1
 mysqlsh>
 util.importJson("/opt/lab/db/window/homeland.json.1", {schema: "docstore", collection: "homeland", convertBsonOid:true})
 db.homeland.find().limit(1)
+db.homeland.find("season=1").fields("name", "summary", "airdate").sort("number")
+db.homeland.find("number=1").fields("name", "airdate", "season").sort("season")
+db.homeland.find("number=1 AND season=1").fields("name", "airdate")
+
+var hlEpisode = db.homeland.find("number = :episodeNum AND season = :seasonNum").fields("name", "airdate")
+hlEpisode.bind('episodeNum', 1).bind('seasonNum', 1)
+hlEpisode.bind('episodeNum', 1).bind('seasonNum', 7)
+
+db.homeland.createIndex('idxSeasonEpisode', {fields: [{field: "$.season", type: "TINYINT UNSIGNED", required: true}, {field: "$.number", type: "TINYINT UNSIGNED", required: true}]})
+ 
+db.homeland.createIndex('idxSummary', {fields: [{field: "$.summary", type: "TEXT(30)"}]})
+db.homeland.createIndex('idxId', {fields: [{field: "$.id", type: "INT UNSIGNED"}], unique: true})
+
 ```
 
- 
+### the following example is only good if you import the tvshow json doc as is into MySQL
 
+```
 \u tvshow
 db.getCollection('homeland').find().fields("_embedded.episodes[*].season","_embedded.episodes[*].name").sort('_embedded.episodes[*].season').limit(1)
+```
+
+## transaction
+
+```
+db.createCollection('my_coll1');
+db.my_coll1.add({"title":"MySQL Document Store", "abstract":"SQL is now optional!", "code": "42"})
+db.my_coll1.add("This is not a valid JSON document")
+db.my_coll1.find()
+db.my_coll1.add({"title":"Quote", "message": "Strive for greatness"})
+db.my_coll1.modify("_id='00005c9514e60000000000000054'").unset("title")
+db.my_coll1.remove("_id='00005c9514e60000000000000054'")
+
+session.startTransaction()
+db.my_coll1.find()
+db.my_coll1.modify("_id = '00005ed5b7e10000000000000066'").unset("code")
+db.my_coll1.add({"title":"Quote", "message": "Be happy, be bright, be you"})
+db.my_coll1.find()
+session.rollback()
+db.my_coll1.find()
 ```
 
 ## Using mysqlxdev API (Ubuntu 7.8)
