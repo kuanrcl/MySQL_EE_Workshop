@@ -83,6 +83,25 @@ r.find("cuisine='Italian' and borough!='Manhattan'").fields("name", "cuisine", "
 
 \sql
 with cte1 as (select doc->>"$.name" as name, doc->>"$.cuisine" as cuisine, (select avg(score) from json_table(doc, "$.grades[*]" columns (score int path "$.score")) as r) as avg_score from restaurants) select *, rank() over (partition by cuisine order by avg_score desc) as 'rank' from cte1 order by 'rank', avg_score desc limit 10;
+```
+
+## TVShow examples
+
+* Download tvshow json document from https://github.com/jdorfman/awesome-json-datasets#tv-shows
+* Need to transform the downloaded json file because the data is saved as 1 huge json document
+* Save one of the tvshow, for example, homeland.json
+```
+sed 's/}}},{"id"/}}}{"id"/g' homeland.json.0 > homeland.json.1
+```
+* Strip off the square bracket enclosing the entire json doc, ie the "\[" at position 0, and the last "\]" at the end of file
+* import the json doc
+```
+mysqlsh>
+util.importJson("/opt/lab/db/window/homeland.json.1", {schema: "docstore", collection: "homeland", convertBsonOid:true})
+db.homeland.find().limit(1)
+```
+
+ 
 
 \u tvshow
 db.getCollection('homeland').find().fields("_embedded.episodes[*].season","_embedded.episodes[*].name").sort('_embedded.episodes[*].season').limit(1)
