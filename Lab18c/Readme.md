@@ -1454,6 +1454,7 @@ ORDER BY fruit,rnk;
 
 ## Window + CTEs
 
+```
 SELECT
   p1.location,
   p1.day, MAX(p2.day),
