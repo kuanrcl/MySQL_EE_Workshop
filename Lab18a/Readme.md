@@ -27,8 +27,6 @@ mongoimport --db test --collection restaurants --drop --file ./primer-dataset.js
 mongoexport --collection=restaurants --db=test > from_mongo.json
 ```
 
-
-
 Results:
 ```
 
@@ -43,6 +41,19 @@ Results:
 2020-05-06T13:46:30.761+0800    [###############.........]  test.restaurants
 2020-05-06T13:46:31.477+0800    [########################]  test.restaurants
 2020-05-06T13:46:31.477+0800    exported 25359 records
+```
+
+5. Simple mongodb commmands
+
+```
+mongo
+show dbs
+use docstore
+show collections
+homeland.find().limit(1).pretty()
+db.homeland.find("season=1").pretty()
+db.homeland.find({"season": 1})
+db.restaurants.find({}, {name:1, grades:1}).limit(1).pretty()
 ```
 
 ## Import the restaurants dataset into MySQL
@@ -114,7 +125,8 @@ db.homeland.createIndex('idxId', {fields: [{field: "$.id", type: "INT UNSIGNED"}
 
 ```
 
-### the following example is only good if you import the tvshow json doc as is into MySQL
+### OMITTED
+the following example is only good if you import the tvshow json doc as is into MySQL
 
 ```
 \u tvshow
