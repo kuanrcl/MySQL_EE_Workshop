@@ -308,7 +308,7 @@ EXPLAIN: -> Limit: 5 row(s)  (actual time=0.630..0.632 rows=5 loops=1)
 
 ![EER](img/world-eer.png)
 
-![QA](img/qa.png)
+![QA](img/QA.png)
         
    
  
