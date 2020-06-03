@@ -12,6 +12,8 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab7](Lab7) | MySQL InnoDB Cluster
 | [Lab8](Lab8) | MySQL Replication
 | [Lab8a](Lab8a) | MySQL Cross-Site replication
+| [Lab8b](Lab8b) | Window and CTEs
+| [Lab8c](Lab8c) | Upgrade 5.6 -> 5.7 -> 8.0
 
 ### MySQL Integration
 |||
