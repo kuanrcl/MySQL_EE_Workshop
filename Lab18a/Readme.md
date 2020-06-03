@@ -69,7 +69,7 @@ util.importJson("./from_mongo.json", {schema: "docstore", collection: "restauran
 ```
 Results:
 ```
-Importing from file "./restaurant_mongo.json" to collection `docstore`.`restaura                                     nts` in MySQL Server at localhost:33060
+Importing from file "./restaurant_mongo.json" to collection `docstore`.`restaurants` in MySQL Server at localhost:33060
 
 .. 25359.. 25359
 Processed 12.44 MB in 25359 documents in 14.5641 sec (1.74K documents/s)
@@ -101,11 +101,18 @@ with cte1 as (select doc->>"$.name" as name, doc->>"$.cuisine" as cuisine, (sele
 * Download tvshow json document from https://github.com/jdorfman/awesome-json-datasets#tv-shows
 * Need to transform the downloaded json file because the data is saved as 1 huge json document
 * Save one of the tvshow, for example, homeland.json
+
+Need to transform the downloaded json docs to multiple documents by looking for this pattern ``}}},{"id"`` in the doc
+
 ```
+{"id":112,"url":"http://www.tvmaze.com/shows/112/south-park","name":"South Park","type":"Animation","language":"English","genres":["Comedy"],"status":"Running","runtime":30,"premiered":"1997-08-13","officialSite":"http://southpark.cc.com","schedule":{"time":"22:00","days":["Wednesday"]},"rating":{"average":8.6},"weight":97,"network":{"id":23,"name":"Comedy Central","country":{"name":"United States","code":"US","timezone":"America/New_York"}},"webChannel":null,"externals":{"tvrage":5266,"thetvdb":75897,"imdb":"tt0121955"},"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_portrait/0/935.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/0/935.jpg"},"summary":"<p><b>South Park</b> is an adult comedy animation show centred around 4 children in the small town of south park. Its humour is often dark involving satirical elements and mocking current real-life events.</p>","updated":1580329363,"_links":{"self":{"href":"http://api.tvmaze.com/shows/112"},"previousepisode":{"href":"http://api.tvmaze.com/episodes/1750710"}},"_embedded":{"episodes":[{"id":7919,"url":"http://www.tvmaze.com/episodes/7919/south-park-1x01-cartman-gets-an-anal-probe","name":"Cartman Gets an Anal Probe","season":1,"number":1,"airdate":"1997-08-13","airtime":"22:00","airstamp":"1997-08-14T02:00:00+00:00","runtime":30,"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_landscape/75/188958.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/75/188958.jpg"},"summary":"<p>Aliens wreak havoc in the Rockies, first by subjecting Cartman to an anal probe, and then by abducting Kyle's baby brother.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7919"}}},{"id":7920,"url":"http://www.tvmaze.com/episodes/7920/south-park-1x02-weight-gain-4000","name":"Weight Gain 4000","season":1,"number":2,"airdate":"1997-08-20","airtime":"22:00","airstamp":"1997-08-21T02:00:00+00:00","runtime":30,"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_landscape/75/188957.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/75/188957.jpg"},"summary":"<p>Cartman tries to slim down when he learns a TV talk-show host is coming to town to give him an award, but he bulks up instead. Meanwhile, Mr. Garrison hatches a plan to murder the visiting celeb.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7920"}}},{"id":7921,"url":"http://www.tvmaze.com/episodes/7921/south-park-1x03-volcano","name":"Volcano","season":1,"number":3,"airdate":"1997-08-27","airtime":"22:00","airstamp":"1997-08-28T02:00:00+00:00","runtime":30,"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_landscape/45/112943.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/45/112943.jpg"},
+
 sed 's/}}},{"id"/}}}{"id"/g' homeland.json.0 > homeland.json.1
 ```
+
 * Strip off the square bracket enclosing the entire json doc, ie the "\[" at position 0, and the last "\]" at the end of file
 * import the json doc
+
 ```
 mysqlsh>
 util.importJson("/opt/lab/db/window/homeland.json.1", {schema: "docstore", collection: "homeland", convertBsonOid:true})
