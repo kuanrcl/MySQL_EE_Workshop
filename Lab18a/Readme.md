@@ -177,6 +177,11 @@ mysqli
 mysqlnd
 pdo_mysql
 ```
+4. download lefred PHP XDevAPI application
+```
+git clone https://github.com/lefred/mysql-docstore-php-example.git
+php -S 192.168.56.106:8000
+```
 
 
 
