@@ -14,6 +14,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab8a](Lab8a) | MySQL Cross-Site replication
 | [Lab8b](Lab8b) | Window and CTEs
 | [Lab8c](Lab8c) | Upgrade 5.6 -> 5.7 -> 8.0
+| [Lab8d](Lab8d) | Query Optimizer
 
 ### MySQL Integration
 |||
