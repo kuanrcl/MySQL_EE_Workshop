@@ -30,8 +30,6 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab18](Lab18) | Innodb Cluster in Openshift (minishift)
 | [Lab18a](Lab18a)| MySQL Document Store
 | [Lab18b](Lab18b)| Using Yii Framework with MySQL
-| [Lab18c](Lab18c)| Window and CTEs
-| [Lab18d](Lab18d)| Upgrade 5.6 -> 5.7 -> 8.0
 
 ### MySQL Operations
 |||
