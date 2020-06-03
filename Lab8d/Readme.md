@@ -59,7 +59,7 @@ SELECT ci.ID, ci.Name, ci.District,
         LIMIT 5\G
  ```
  
- 
+ ![world_eer.png]
   
         
    
