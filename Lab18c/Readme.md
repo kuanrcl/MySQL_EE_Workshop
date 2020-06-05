@@ -1,4 +1,22 @@
-# Window and CTEs
+# Manage MySQL with Ansible
+
+## Install Ansible
+
+Make sure you have EPEL repository enabled
+```
+cat /etc/yum.repos.d/epel-yum-ol7.repo
+[ol7_epel]
+name=Oracle Linux $releasever EPEL ($basearch)
+baseurl=http://yum.oracle.com/repo/OracleLinux/OL7/developer_EPEL/$basearch/
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+gpgcheck=1
+enabled=1
+
+sudo yum install ansible
+```
+
+
+Window and CTEs
 ## CTEs
 
 ```
