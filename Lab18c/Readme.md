@@ -32,11 +32,8 @@ ansible ALL=(ALL)       ALL
 ## service management apps and more.
 # %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
 
-## Allows people in group wheel to run all commands
-%wheel  ALL=(ALL)       ALL
-
 ## Same thing without a password
-# %wheel        ALL=(ALL)       NOPASSWD: ALL
+%wheel        ALL=(ALL)       NOPASSWD: ALL
 
 ssh-keygen
 
@@ -45,7 +42,36 @@ ssh-copy-id ansible1
 ssh-copy-id ansible2
 ```
 
+# Ansible basics
 
 ```
+# inventory file 
+[db]
+secondary
+
+# ansible.cfg
+[defaults]
+remote_user=ansible
+host_key_checking=false
+inventory=inventory
+
+[privilege_escalation]
+become = True
+become_method = sudo
+become_user = root
+become_ask_pass = False
+```
+
+```
+ansible all -i inventory --list-hosts
+ansible all -m command -a "useradd bob"
+ansible all -m command -a "id bob"
+```
+
+# Ansible_playbook
+
+
+
+
 
 
