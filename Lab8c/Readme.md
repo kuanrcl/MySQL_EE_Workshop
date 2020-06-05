@@ -9,14 +9,32 @@ Use OCI to demo the RPM upgrade
 
 ### 5.6 -> 5.7 -> 8.0
 ```
-sudo yum install mysql-community-5.6*
+wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+sudo yum-config-manager --disble mysql80-community
+sudo yum install mysql-community-5.6* --disablerepo=mysql* --enablerepo=mysql56-community
 sudo systemctl stop mysqld
 sudo yum upgrade mysql-community-* --disablerepo=mysql* --enablerepo=mysql57-community
 sudo systemctl start mysqld
 sudo mysql_upgrade
 sudo systemctl restart mysqld
+sudo yum install mysql-shell
+mysqlsh
+dba.deploySandboxInstance(3310)
+dba.deploySandboxInstance(3320)
+dba.deploySandboxInstance(3330)
+dba.createCluster('myCluster')
+var x = dba.getCluster('myCluster')
+x.addInstance('root@localhost:3320')
+x.addInstance('root@localhost:3330')
+x.status()
+dba.stopSandboxInstance(3320)
+x.status()
+dba.startSandboxInstance(3320)
+x.status()
+x.rejoinInstance('root@localhost:3320')
 mysqlsh -- util checkForServerUpgrade root@localhost --config-path=/etc/my.cnf
 sudo yum upgrade mysql-community-* --disablerepo=mysql* --enablerepo=mysql80-community
+sudo yum remove mysql-community-* mysql-shell-*
 ```
 
 ## Custom Install
