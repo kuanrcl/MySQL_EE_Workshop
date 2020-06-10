@@ -10,7 +10,7 @@ Use OCI to demo the RPM upgrade
 ### 5.6 -> 5.7 -> 8.0
 ```
 wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
-sudo yum-config-manager --disble mysql80-community
+sudo yum-config-manager --disable mysql80-community
 sudo yum install mysql-community-5.6* --disablerepo=mysql* --enablerepo=mysql56-community
 sudo systemctl stop mysqld
 sudo yum upgrade mysql-community-* --disablerepo=mysql* --enablerepo=mysql57-community
