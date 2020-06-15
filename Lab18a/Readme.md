@@ -87,8 +87,8 @@ r.find().limit(2)
 
 ## More examples
 ```
-r.find.fields("name", "cuisine").limit(2)
-r.find("cuision='Bakery'").fields("name", "cuisine").limit(2)
+r.find().fields("name", "cuisine").limit(2)
+r.find("cuisine='Bakery'").fields("name", "cuisine").limit(2)
 r.find("cuisine in ('Turkish', 'Italian')").fields("name", "cuisine").limit(10)
 r.find("cuisine='Italian' and borough!='Manhattan'").fields("name", "cuisine", "borough").limit(2)
 
