@@ -180,6 +180,7 @@ db.my_coll1.find()
 ## Using mysqlxdev API (Ubuntu 7.8)
 1. install development tools
 ```
+apt update
 apt install build-essential libprotobuf-dev libboost-dev openssl protobuf-compiler liblz4-tool zstd
 apt install php7.2-cli php7.2-dev php7.2-mysql php7.2-pdo php7.2-xml
 ```
