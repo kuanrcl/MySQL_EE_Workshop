@@ -192,6 +192,7 @@ sudo apt update
 sudo apt-get install mysql-server
 ```
 3. install mysqlxdevapi (requires boost and protobuf libraries)
+The pecl install takes a long time, it looks like it is compiling the mysqlx api
 ```
 sudo pecl install mysql_xdevapi
 echo "extension=mysql_xdevapi.so" > /etc/php/7.2/mods-available/mysql_xdevapi.ini
