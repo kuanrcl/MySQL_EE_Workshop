@@ -189,6 +189,16 @@ audit-log=FORCE_PLUS_PERMANENT
 SELECT audit_log_filter_set_filter('log_all', '{ "filter": { "log": true } }');
 SELECT audit_log_filter_set_user('%', 'log_all');
 ```
+#### Encryption
+
+```
+my.cnf
+#audit_log_format=json
+#audit_log_encryption=AES
+
+Select audit_log_read(audit_log_read_bookmark())
+select audit_log_encryption_password_get()
+```
 
 #### Uninstall
 
