@@ -141,7 +141,7 @@ ed. NB Schema Registry and Avro serialiser are both part of Confluent Platform."
 ### Load the JDBC connection 
 ```
 cd $CONFLUENT_HOME
-bin/confluent local load jdbc_source_mysql_foobar_01 -- -d /opt/download/kafka/kafka-connect-jdbc-source.json
+bin/confluent local load jdbc_source_mysql_foobar_01 -- -d /opt/download/lab/kafka/kafka-connect-jdbc-source.json
 bin/confluent local status jdbc_source_mysql_foobar_01
 ```
 You should see the driver successfully loaded and running
