@@ -189,6 +189,7 @@ audit-log=FORCE_PLUS_PERMANENT
 SELECT audit_log_filter_set_filter('log_all', '{ "filter": { "log": true } }');
 SELECT audit_log_filter_set_user('%', 'log_all');
 ```
+
 #### Encryption
 
 ```
@@ -196,8 +197,20 @@ my.cnf
 #audit_log_format=json
 #audit_log_encryption=AES
 
+# arwyQaqR:Kps
 Select audit_log_read(audit_log_read_bookmark())
 select audit_log_encryption_password_get()
+openssl enc -d -aes-256-cbc -pass pass:password -md sha256 -in audit.timestamp.log.enc -out audit.timestamp.log
+openssl enc -d -aes-256-cbc -pass pass:arwyQaqR:Kps -md sha256 -in audit.log.20200618T122112-1.enc -out audit.log.20200618T122112-1.enc.log
+vi
+:%!python -m json.tool
+```
+
+#### Stop
+
+```
+select audit_log_filter_remove_filter('log_all');
+select audit_log_filter_remove_user('%');
 ```
 
 #### Uninstall
