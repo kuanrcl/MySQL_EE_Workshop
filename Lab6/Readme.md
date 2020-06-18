@@ -207,6 +207,77 @@ DROP FUNCTION audit_log_read;
 DROP FUNCTION audit_log_read_bookmark;
 ```
 
+! Enterprise Data Masking
+
+```
+INSTALL PLUGIN data_masking SONAME 'data_masking.so';
+CREATE FUNCTION gen_blacklist RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION gen_dictionary RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION gen_dictionary_drop RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION gen_dictionary_load RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION gen_range RETURNS INTEGER
+  SONAME 'data_masking.so';
+CREATE FUNCTION gen_rnd_email RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION gen_rnd_pan RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION gen_rnd_ssn RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION gen_rnd_us_phone RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION mask_inner RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION mask_outer RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION mask_pan RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION mask_pan_relaxed RETURNS STRING
+  SONAME 'data_masking.so';
+CREATE FUNCTION mask_ssn RETURNS STRING
+  SONAME 'data_masking.so';
+```
+
+!! Unnstall
+
+```
+UNINSTALL PLUGIN data_masking;
+DROP FUNCTION gen_blacklist;
+DROP FUNCTION gen_dictionary;
+DROP FUNCTION gen_dictionary_drop;
+DROP FUNCTION gen_dictionary_load;
+DROP FUNCTION gen_range;
+DROP FUNCTION gen_rnd_email;
+DROP FUNCTION gen_rnd_pan;
+DROP FUNCTION gen_rnd_ssn;
+DROP FUNCTION gen_rnd_us_phone;
+DROP FUNCTION mask_inner;
+DROP FUNCTION mask_outer;
+DROP FUNCTION mask_pan;
+DROP FUNCTION mask_pan_relaxed;
+DROP FUNCTION mask_ssn;
+```
+
+!! Examples
+
+```
+SELECT mask_inner('This is a string', 5, 1);
+SELECT mask_inner('This is a string', 1, 5);
+SELECT mask_inner('This is a string', 5, 1, '*');
+SELECT mask_outer('This is a string', 5, 1);
+SELECT mask_outer('This is a string', 1, 5);
+SELECT mask_outer('This is a string', 5, 1, '#');
+SELECT mask_pan(gen_rnd_pan());
+SELECT mask_pan_relaxed(gen_rnd_pan());
+SELECT gen_range(1, 10);
+SELECT gen_rnd_email();
+
+select s.emp_no, e.last_name, e.first_name, mask_inner(cast(salary as char), 0, 2) as salary from employees.salaries s, employees.employees e where s.emp_no=e.emp_no limit 50;
+```
+
 
 
 
