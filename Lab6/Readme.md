@@ -207,7 +207,7 @@ DROP FUNCTION audit_log_read;
 DROP FUNCTION audit_log_read_bookmark;
 ```
 
-! Enterprise Data Masking
+# Enterprise Data Masking
 
 ```
 INSTALL PLUGIN data_masking SONAME 'data_masking.so';
@@ -241,7 +241,7 @@ CREATE FUNCTION mask_ssn RETURNS STRING
   SONAME 'data_masking.so';
 ```
 
-!! Unnstall
+## Unnstall
 
 ```
 UNINSTALL PLUGIN data_masking;
@@ -261,7 +261,7 @@ DROP FUNCTION mask_pan_relaxed;
 DROP FUNCTION mask_ssn;
 ```
 
-!! Examples
+## Examples
 
 ```
 SELECT mask_inner('This is a string', 5, 1);
