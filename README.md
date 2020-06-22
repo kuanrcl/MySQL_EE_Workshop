@@ -32,6 +32,7 @@ MySQL Enterprise Edition Hands-on Workshop
 | [Lab18a](Lab18a)| MySQL Document Store
 | [Lab18b](Lab18b)| Using Yii Framework with MySQL
 | [Lab18c](Lab18c)| Manage MySQL with Ansible
+| [Lab18d](Lab18d)| Using Hibernate with MySQL
 
 ### MySQL Operations
 |||
