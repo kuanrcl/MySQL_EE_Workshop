@@ -190,7 +190,7 @@ SELECT audit_log_filter_set_filter('log_all', '{ "filter": { "log": true } }');
 SELECT audit_log_filter_set_user('%', 'log_all');
 ```
 
-#### Encryption
+#### Audit settings
 
 ```
 my.cnf
