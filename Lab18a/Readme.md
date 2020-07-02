@@ -176,8 +176,15 @@ db.my_coll1.find()
 session.rollback()
 db.my_coll1.find()
 ```
+## Using mysqlxdev API (Oracle Linux 7.8)
+```
+sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+sudo yum-config-manager --enable remi-php74
+sudo yum install php php-cli php-mysqlnd php-zip php-gd php-mcrypt php-mbstring php-xml php-json
+```
 
-## Using mysqlxdev API (Ubuntu 7.8)
+## Using mysqlxdev API (Ubuntu 18.04)
 1. install development tools
 ```
 apt update
