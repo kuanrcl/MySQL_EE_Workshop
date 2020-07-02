@@ -181,7 +181,21 @@ db.my_coll1.find()
 sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 sudo yum-config-manager --enable remi-php74
-sudo yum install php php-cli php-mysqlnd php-zip php-gd php-mcrypt php-mbstring php-xml php-json
+sudo yum install php php-cli php-mysqlnd php-zip php-gd php-mcrypt php-mbstring php-xml php-json php-pear php-devel
+sudo yum install boost-devel protobuf-devel
+sudo yum install devtoolset-8 
+sudo scl enable devtoolset-8 bash
+
+# install mysql_xdevapi
+sudo pecl install mysql_xdevapi
+Installing '/usr/lib64/php/modules/mysql_xdevapi.so'
+install ok: channel://pecl.php.net/mysql_xdevapi-8.0.20
+configuration option "php_ini" is not set to php.ini location
+You should add "extension=mysql_xdevapi.so" to php.ini
+
+# vi /etc/php.d/40-mysql_xdevapi.ini
+extension=mysql_xdevapi.so
+
 ```
 
 ## Using mysqlxdev API (Ubuntu 18.04)
