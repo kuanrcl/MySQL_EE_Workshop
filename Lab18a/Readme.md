@@ -178,9 +178,16 @@ db.my_coll1.find()
 ```
 ## Using mysqlxdev API (Oracle Linux 7.8)
 ```
+# remirepo
 sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 sudo yum-config-manager --enable remi-php74
+
+# Oracle repo
+
+# install php
+sudo yum install -y oracle-php-release-el7 oracle-epel-release-el7 mysql-release-el7
+sudo yum install php php-mysqlnd php-json 
 sudo yum install php php-cli php-mysqlnd php-zip php-gd php-mcrypt php-mbstring php-xml php-json php-pear php-devel
 sudo yum install boost-devel protobuf-devel
 sudo yum install devtoolset-8 
