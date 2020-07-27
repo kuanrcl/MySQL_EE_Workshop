@@ -177,6 +177,12 @@ session.rollback()
 db.my_coll1.find()
 ```
 ## Using mysqlxdev API (Oracle Linux 7.8)
+
+**Best way to install xdevapi driver**
+Use Remi Repo (https://blog.remirepo.net/pages/Config-en)
+
+http://rpms.remirepo.net/enterprise/7/php74/x86_64/php-pecl-mysql-xdevapi-8.0.20-1.el7.remi.7.4.x86_64.rpm
+
 ```
 # remirepo
 sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
