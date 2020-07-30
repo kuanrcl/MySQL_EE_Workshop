@@ -48,7 +48,7 @@ docker images
 After you have loaded the MySQL docker image, install mysql router
 ```
 docker pull mysql/mysql-router
-dcoker images
+docker images
 ```
 ![Docker](img/K10.png)
 
