@@ -156,7 +156,7 @@ kubectl -n mysql-cluster exec -it mysql-0-5465d4b6bd-cfsgh -- mysqlsh gradmin:gr
 ```
 Done
 
-! Common Kubectl commands
+## Common Kubectl commands
 
 ```
 kubectl -n mysql-cluster get pods, svc, deployments
