@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-0
+  namespace: mysql-cluster
+spec:
+  selector:
+    matchLabels:
+      app: mysql-0
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-0
+    spec: 
+     hostname: mysql-0
+     containers:
+     - image: mysql/enterprise-server:8.0 
+       name: mysql
+       env:
+         - name: MYSQL_ROOT_PASSWORD
+           valueFrom:
+             secretKeyRef:
+                name: mysql-root-password
+                key: password
+       resources:
+         requests:
+           memory: "1024Mi"
+           cpu: "500m"
+         limits:
+           memory: "1024Mi"
+           cpu: "500m"
+       ports:
+        - containerPort: 3306
+          name: mysql
+       volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+        - name: backup-persistent-storage
+          mountPath: /backup
+     volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim-mysql-0
+      - name: backup-persistent-storage
+        persistentVolumeClaim:
+          claimName: backup-pv-claim-mysql-0
+

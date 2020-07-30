@@ -1,0 +1,58 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-router
+  namespace: mysql-cluster
+  labels:
+    app: mysql-router
+spec:
+  ports:
+    - name: tcp-rw
+      port: 6446
+      targetPort: 6446
+    - name: tcp-ro
+      port: 6447
+      targetPort: 6447
+  selector:
+    app: mysql-router
+  type: LoadBalancer 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-router
+  namespace: mysql-cluster
+  labels:
+    app: mysql-router
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mysql-router
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-router
+    spec:
+      containers:
+      - name: mysqlrouter
+        image: mysql/mysql-router:latest
+        env:
+        - name: MYSQL_PASSWORD
+          value: grpass 
+        - name: MYSQL_USER
+          value: gradmin
+        - name: MYSQL_PORT
+          value: "3306"
+        - name: MYSQL_HOST
+          value: mysql-0
+        - name: MYSQL_INNODB_NUM_MEMBERS
+          value: "3"
+        command:
+        - "/bin/bash"
+        - "-cx"
+        - "exec /run.sh mysqlrouter"
+

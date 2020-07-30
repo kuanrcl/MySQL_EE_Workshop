@@ -1,0 +1,84 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim-mysql-0
+  namespace: mysql-cluster
+spec:
+  storageClassName: manual
+  volumeName: mysql-pv-volume-mysql-0
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup-pv-claim-mysql-0
+  namespace: mysql-cluster
+spec:
+  storageClassName: manual
+  volumeName: mysql-pv-backup-mysql-0
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim-mysql-1
+  namespace: mysql-cluster
+spec:
+  storageClassName: manual
+  volumeName: mysql-pv-volume-mysql-1
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup-pv-claim-mysql-1
+  namespace: mysql-cluster
+spec:
+  storageClassName: manual
+  volumeName: mysql-pv-backup-mysql-1
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim-mysql-2
+  namespace: mysql-cluster
+spec:
+  storageClassName: manual
+  volumeName: mysql-pv-volume-mysql-2
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup-pv-claim-mysql-2
+  namespace: mysql-cluster
+spec:
+  storageClassName: manual
+  volumeName: mysql-pv-backup-mysql-2
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
