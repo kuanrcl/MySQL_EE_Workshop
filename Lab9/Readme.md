@@ -77,7 +77,7 @@ kubectl -n mysql-cluster get pv
 ```
 ![PV List](img/K7.png)
 
-Create secret setting for mysql root password
+Create secret setting for mysql root password ("root", this would be encoded in base64 format)
 ```
 kubectl apply -f secret.yaml
 ```
