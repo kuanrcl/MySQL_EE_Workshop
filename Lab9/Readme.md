@@ -160,6 +160,7 @@ Done
 
 ```
 kubectl -n mysql-cluster get pods, svc, deployments
+kubectl -n mysql-cluster describe secret mysql-root-password
 ```
 
 ```
