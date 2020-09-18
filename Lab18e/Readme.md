@@ -7,12 +7,13 @@ sudo apt-get install pdsh
 cd /tmp
 wget https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
 cd /opt
-tar zxvf /tmp/hadoop-3.2.1.tar.gz
+sudo tar zxvf /tmp/hadoop-3.2.1.tar.gz
 vi /opt/hadoop-3.2.1/etc/hadoop/hadoop-env.sh
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-/opt/hadoop-3.2.15/bin/hadoop 
+/opt/hadoop-3.2.1/bin/hadoop 
 
 # format XML in vi
+%!xmllint "%" --format
 %!xmllint --format %
 set ft=xml | %!xmllint --format -
 
