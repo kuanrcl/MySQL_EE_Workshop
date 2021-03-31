@@ -175,7 +175,9 @@ Besides standalone MySQL instances, you can also monitor MySQL replica and InnoD
 
 ![mem-28](img/mem-28.png)
 
-![mem-29](img/mem-29.png)
+![mem-29](img/mem-29.jpg)
+
+![mem-35](img/mem-35.jpg)
 
 ## Backups
 
