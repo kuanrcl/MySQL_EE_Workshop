@@ -80,6 +80,11 @@ The main dashboard displays the following information
 
 ![mem-34](img/mem-34.png)
 
+### Events
+
+You can check the Events tab for critical events for immediate remedy or actions
+![mem-39](img/mem-39.png)
+
 ### Monitor MySQL instances
 
 You will add new instances to MEM dashboard by specifying the hosts/ports of the MySQL instances to be added to MEM dashboard
@@ -139,11 +144,11 @@ You need to click on the **Generate Report** to see the InnoDB Buffer utilizatio
 
 Row Lock
 
-![mem-39](img/mem-39.jpg)
+![mem-37](img/mem-37.jpg)
 
 Table Lock
 
-![mem-38](img/mem-38.jpg)
+![mem-36](img/mem-36.jpg)
 
 ## Query Analyzer
 
