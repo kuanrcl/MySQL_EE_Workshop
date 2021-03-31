@@ -67,4 +67,42 @@ Or
 /home/mysql/mysql/enterprise/agent/etc/init.d/mysql-monitor-agent start
 ```
 
+## What are you looking at in MySQL Enterprise Monitor (MEM)?
+
+There is a lot of information in MEM, it can be overwhelming if you don't know what you are looking for or looking at. Let's expore what is available in MEM and how you can use MEM to help you understand MySQL better
+
+### MEM Main Dashboard
+
+The main dashboard displays the following information
+1. A list of Timeseries graphs
+2. MySQL instances monitored, problematic instances, hosts, and database activities
+3. Critical events
+
+![mem-34](img/mem-34.png)
+
+### Monitor MySQL instances
+
+You will add new instances to MEM dashboard by specifying the hosts/ports of the MySQL instances to be added to MEM dashboard
+
+![mem-6](img/mem-6.png)
+
+Once the instance is added to MEM, you can then navigate the various configuration tabs to inspect the current configuration details of the monitored MySQL instance
+
+![mem-7](img/mem-7.png)
+
+### What are you looking for and looking at?
+
+You can find lots of useful metrics by selecting the various metrics on the left panel of the MEM dashboard
+* Timeseries Graph
+![mem-8](img/mem-8.png)
+3. Table Statistics
+4. 
+5. User Staticstics
+6. Memory Usage
+7. Database File I/O
+8. InnoDB Buffer Pool
+9. Processes
+10. Lock Waits
+
+
 
