@@ -173,10 +173,12 @@ There are a list of timeseries graph to let you peek into the health of MySQL in
 ![mem-8](img/mem-8.png)
 
 * Table Statistics
+You can find out which are the **HOT** tables accessed by users/applications
 
 ![mem-9](img/mem-9.jpg)
 
 * User Staticstics
+You can find out avarage memory consumptions by users (useful to estimate average memory requirments for applications)
 
 ![mem-10](img/mem-10.png)
 
@@ -211,6 +213,8 @@ You need to click on the **Generate Report** to see the InnoDB Buffer utilizatio
 
 
 * Lock Waits
+
+When users complain about not able to access data, it is likely that some tables/rows are locked
 
 Row Lock
 
