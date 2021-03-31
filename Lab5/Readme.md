@@ -99,6 +99,76 @@ Once the instance is added to MEM, you can then navigate the various configurati
 
 You can find lots of useful metrics by selecting the various metrics on the left panel of the MEM dashboard
 * Timeseries Graph
+There are a list of timeseries graph to let you peek into the health of MySQL instances you are monitoring:
+1. Connections
+2. Connections - Aborted
+3. Connections - Cache
+4. Connections - Maximum
+5. Database Activitiy
+6. Database Queries
+7. Agent operations on MySQL Instance
+8. Binary Log Cache Efficiency
+9. Binary Log Space Usage
+10. InnoDB Data Fille I/O - Bytes
+11. InnoDB Temporary File I/O - Bytes
+12. InnoDB Redo Log File I/O - Bytes
+13. InnoDB Temporary File I/O - Latency
+14. Relay Log File I/O - Bytes
+15. Binary Log File I/O - Latency
+16. Binary Log File I/O - Bytes
+17. InnoDB Data Fille I/O - Latency
+18. Relay Log File I/O - Latency
+19. InnoDB Relay Log File I/O - Latency
+20. Database Transactions
+21. Group Replication - Conflicts Detected
+22. Group Replication - Transactions In Queue
+23. Group Replication - Transactions Checked
+24. Group Replication - Transactions Rows Validating
+25. Hit Ratios
+26. InnoDB Adaptive Hash Index Memory
+27. InnoDB Adaptive Hash Index Searches
+28. InnoDB Buffer Pool 
+29. InnoDB Buffer Pool Page Activity
+30. InnoDB Buffer Pool Pending Operations
+31. InnoDB Change Buffer Activity
+32. InnoDB Change Buffer Usage
+33. InnoDB Compression Time
+34. InnoDB Data Dictionary Memory
+35. InnoDB Doublewrite Buffer Activity
+36. InnoDB OS File Access
+37. InnoDB Open Files
+38. InnoDB Redo Log Checkpoint Lag
+39. InnoDB Row Details
+40. InnoDB Row Lock Time
+41. InnoDB Row Lock Time Statistics
+42. InnoDB Row Lock Waits
+43. InnoDB Row Lock Current
+44. InnoDB Transaction History
+45. InnoDB Transaction Lock Memory
+46. InnoDB Transactions
+47. MyISAM Key Buffer Activity
+48. MyISAM Key Buffer Usage
+49. Network - Database Throughput
+50. Opened Tables
+51. Prepared Statement API
+52. Prepared Statement API Invalidations
+53. Prepared Statement SQL
+54. Prepared Statement Utilization
+55. Query Response Time Index
+56. Replication Delay - Per Channel
+57. Row Access Statistics
+58. Row Accesses
+59. Row Accesses Index Usage Ratio
+60. Row Writes
+61. Row Returned
+62. Statement Statistics
+63. Slow Queries
+64. Sort Acitivity
+65. Statement Errors and Warnings
+66. variablelsReport
+67. Table Lock Wait Ratio
+68. Table Locks
+69. Temporary Tables
 
 ![mem-8](img/mem-8.png)
 
