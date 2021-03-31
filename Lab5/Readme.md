@@ -126,17 +126,24 @@ You can find lots of useful metrics by selecting the various metrics on the left
 * InnoDB Buffer Pool
 
 You need to click on the **Generate Report** to see the InnoDB Buffer utilization
-![mem-16](img/mem-16.png)
+![mem-16](img/mem-16.jpg)
 
 ![mem-17](img/mem-17.png)
 
 * Processes
 
-![mem-18](img/mem-18.png)
+![mem-18](img/mem-18.jpg)
 
 
 * Lock Waits
 
+Row Lock
+
+![mem-39](img/mem-39.jpg)
+
+Table Lock
+
+![mem-38](img/mem-38.jpg)
 
 ## Query Analyzer
 
