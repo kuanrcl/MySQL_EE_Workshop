@@ -231,7 +231,7 @@ It is very common that users encountered slow response time when executing queri
 2. Between 100ms and 400ms (Yellow)
 3. More than 400ms (Red)
 
-![mem-23](img/mem-23.jpg)
+![mem-23](img/mem-23.png)
 
 ![mem-24](img/mem-24.png)
 
