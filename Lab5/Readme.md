@@ -99,7 +99,7 @@ You can find lots of useful metrics by selecting the various metrics on the left
 
 * Table Statistics
 
-![mem-9](img/mem-9.png)
+![mem-9](img/mem-9.jpg)
 
 * User Staticstics
 
@@ -108,17 +108,17 @@ You can find lots of useful metrics by selecting the various metrics on the left
 
 * Memory Usage
 
-![mem-11](img/mem-11.png)
+![mem-11](img/mem-11.jpg)
 
 
 * Database File I/O
 ** By File Type
-![mem-12](img/mem-12.png)
+![mem-12](img/mem-12.jpg)
 
 ![mem-13](img/mem-13.png)
 
 ** By Wait Type
-![mem-14](img/mem-14.png)
+![mem-14](img/mem-14.jpg)
 
 ** By Thread Type
 ![mem-15](img/mem-15.png)
