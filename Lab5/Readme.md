@@ -83,13 +83,13 @@ The main dashboard displays the following information
 ### Events
 
 You can check the Events tab for critical events for immediate remedy or actions
-![mem-39](img/mem-39.png)
+![mem-39](img/mem-39.jpg)
 
 ### Monitor MySQL instances
 
 You will add new instances to MEM dashboard by specifying the hosts/ports of the MySQL instances to be added to MEM dashboard
 
-![mem-6](img/mem-6.png)
+![mem-6](img/mem-6.jpg)
 
 Once the instance is added to MEM, you can then navigate the various configuration tabs to inspect the current configuration details of the monitored MySQL instance
 
