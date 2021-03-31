@@ -94,15 +94,92 @@ Once the instance is added to MEM, you can then navigate the various configurati
 
 You can find lots of useful metrics by selecting the various metrics on the left panel of the MEM dashboard
 * Timeseries Graph
+
 ![mem-8](img/mem-8.png)
-3. Table Statistics
-4. 
-5. User Staticstics
-6. Memory Usage
-7. Database File I/O
-8. InnoDB Buffer Pool
-9. Processes
-10. Lock Waits
+
+* Table Statistics
+
+![mem-9](img/mem-9.png)
+
+* User Staticstics
+
+![mem-10](img/mem-10.png)
+
+
+* Memory Usage
+
+![mem-11](img/mem-11.png)
+
+
+* Database File I/O
+** By File Type
+![mem-12](img/mem-12.png)
+
+![mem-13](img/mem-13.png)
+
+** By Wait Type
+![mem-14](img/mem-14.png)
+
+** By Thread Type
+![mem-15](img/mem-15.png)
+
+* InnoDB Buffer Pool
+
+You need to click on the **Generate Report** to see the InnoDB Buffer utilization
+![mem-16](img/mem-16.png)
+
+![mem-17](img/mem-17.png)
+
+* Processes
+
+![mem-18](img/mem-18.png)
+
+
+* Lock Waits
+
+
+## Query Analyzer
+
+It is very common that users encountered slow response time when executing queries, you can turn to MEM to monitor slow running queries from time to time to fine tune the database to improve these slow running queries. MEM provides **Query Analyzer** to categorize slow running queries by color using **Query Response Time Index (QRTi)** in the following categories:
+1. Less than 100ms (Green)
+2. Between 100ms and 400ms (Yellow)
+3. More than 400ms (Red)
+
+![mem-23](img/mem-23.jpg)
+
+![mem-24](img/mem-24.png)
+
+You can drill into one of these queries for more details
+
+![mem-25](img/mem-25.png)
+
+![mem-26](img/mem-26.png)
+
+## Replication
+
+Besides standalone MySQL instances, you can also monitor MySQL replica and InnoDB Cluster
+
+![mem-27](img/mem-27.png)
+
+![mem-28](img/mem-28.png)
+
+![mem-29](img/mem-29.png)
+
+## Backups
+
+You can also monitor the status of database backup
+![mem-30](img/mem-30.png)
+![mem-31](img/mem-31.png)
+![mem-32](img/mem-32.png)
+
+## Advisors
+
+MEM comes bundled with more than 200 Advisors to monitor critical database events using a set of threadholds, you can create event handlers to define actions whenever any of these threadhold is breached, for example, trigger an email, SMTP traps to alert the DBA
+![mem-33](img/mem-33.png)
+
+
+
+
 
 
 
