@@ -18,17 +18,13 @@ Select the TAR version in the Deploymnet Type
 Once downloaded, untar the file
 ```
 cd /opt
-sudo tar zxvf /tmp/confluent-5.4.0-2.12.tar.gz
-sudo ln -s /opt/confluent-5.4.0 /usr/local/kafka
+sudo tar zxvf /tmp/confluent-community-6.2.0.tar.gz
+sudo ln -s /opt/confluent-6.2.0 /usr/local/kafka
 ```
 ### Confluent Hub Client
 Install confluent hub client from https://docs.confluent.io/current/connect/managing/confluent-hub/client.html#hub-linux. Just download and unzip the client
 
-### Install kafka connect datagent
-```
-confluent-hub install \
---no-prompt confluentinc/kafka-connect-datagen:latest
-```
+
 ### Configure Confluent Kafka
 Once everything is installed, set up the environment
 ```
@@ -36,6 +32,21 @@ vi ~/.bash_profile
 export CONFLUENT_HOME=/usr/local/kafka
 export JAVA_HOME=/usr/local/mysql/enterprise/agent/java
 export PATH=$PATH:$CONFLUENT_HOME/bin:$JAVA_HOME/bin
+```
+### Install kafka connect datagent
+```
+confluent-hub install \
+--no-prompt confluentinc/kafka-connect-datagen:latest
+```
+### Install kafka connect jdbc
+```
+confluent-hub install confluentinc/kafka-connect-jdbc:latest
+```
+
+### Install confluent cli
+```
+wget https://s3-us-west-2.amazonaws.com/confluent.cloud/confluent-cli/archives/latest/confluent_latest_linux_amd64.tar.gz
+tar zxvf confluent_latest_linux_amd64.tar.gz
 ```
 
 ## Configure Kafka Connect to MySQL
