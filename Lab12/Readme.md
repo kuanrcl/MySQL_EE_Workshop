@@ -58,14 +58,14 @@ Unzip the file and make sure the driver is also at confluent jdbc directory
 ``` 
 cd /opt
 unzip /tmp/mysql-connector-java-8.0.19.zip
-cd $CONFLUENT_HOME/share/java/kafka-connect-jdbc
+cd $CONFLUENT_HOME/share/confluent-hub-components/confluentinc-kafka-connect-jdbc/lib
 ln -s /opt/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19.jar .
 ```
 
 ### Start Kafka
 Once the MySQL JDBC driver is installed, Kafka connect will load the MySQL JDBC driver during startup
 ```
-confluent local start
+confluent local services start
 ```
 You should see kafka is started
 ```
