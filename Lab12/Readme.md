@@ -256,6 +256,14 @@ If the JSON processor is not installed (jq), install jq
 ```
 sudo yum install jq
 ```
+### Check connector status
+
+```
+curl localhost:8083/connector-plugins | jq
+curl localhost:8083/connectors| jq
+curl localhost:8083/connectors/mysql-sink/status | jq
+curl localhost:8083/connectors/mysql-sink/task | jq
+```
 
 ### Test connector to MySQL
 Create a MySQL json configuration
