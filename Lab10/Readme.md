@@ -65,7 +65,7 @@ router.route('/').get((req, res) => {
         .then(result => {
                 
                 res.render('home', {
-                    pageTitle: 'Welcome to shithole',
+                    pageTitle: 'Welcome to MyStore',
                     products: result.fetchAll()
                 });
         })
